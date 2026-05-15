@@ -52,7 +52,7 @@ export default function RegisterPage() {
   const onSubmit = async (data: FormData) => {
     try {
       // await registerUser(data)
-      const res = await signUp({...data, dateInscription: new Date(), roleId: 2})
+      const res = await signUp({...data, dateInscription: new Date(), role: {id: 2}})
       if(res){
         toast.success('Account created')
         router.push('/auth/login')

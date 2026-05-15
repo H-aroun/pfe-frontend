@@ -2,13 +2,10 @@ const BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'
 interface User {
     id?: string | number
     email: string
-    role?: string | { name?: string }
     firstName?: string
     lastName?: string
-    name?: string
     dateInscription?: Date
-    updatedAt?: string,
-    roleId : number
+    role : {id: number}
 }
 
 
