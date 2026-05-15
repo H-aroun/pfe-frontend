@@ -1,5 +1,7 @@
 import axios from 'axios'
 import Cookies from 'js-cookie'
+import { normalizeUser } from '@/lib/auth'
+import type { User } from '@/types'
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'
 
@@ -7,6 +9,27 @@ export const api = axios.create({
   baseURL: BASE_URL,
   headers: { 'Content-Type': 'application/json' },
 })
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null
+}
+
+function normalizeUserList(data: unknown): User[] {
+  const source = Array.isArray(data)
+    ? data
+    : isRecord(data) && Array.isArray(data.data)
+      ? data.data
+      : []
+
+  return source
+    .filter(isRecord)
+    .map((user) => normalizeUser(user as Parameters<typeof normalizeUser>[0]))
+}
+
+function normalizeUserResponse(data: unknown): User | unknown {
+  if (!isRecord(data)) return data
+  return normalizeUser(data as Parameters<typeof normalizeUser>[0])
+}
 
 // Attach JWT to every request
 api.interceptors.request.use((config) => {
@@ -32,25 +55,32 @@ api.interceptors.response.use(
 
 // ─── Auth ─────────────────────────────────────────────────────────────────────
 // Backend: POST /auth/login  → { userInfo, access_token }
-// Backend: no /auth/register endpoint (users are created via /users if needed)
+// Backend: POST /auth/register → { name, email, password }
 export const authApi = {
   login: (data: { email: string; password: string }) =>
     api.post('/auth/login', data),
   register: (data: {
-    firstName: string
-    lastName: string
+    name: string
     email: string
     password: string
-    role?: string
-  }) => api.post('/users', data),   // backend creates users via POST /users
-  me: () => api.get('/users/me'),
+  }) => api.post('/auth/register', data),
+  me: () => api.get('/users/me').then((response) => {
+    response.data = normalizeUserResponse(response.data)
+    return response
+  }),
 }
 
 // ─── Users ────────────────────────────────────────────────────────────────────
 // Backend: GET /users (admin), GET /users/:id, DELETE /users/:id
 export const usersApi = {
-  getAll: () => api.get('/users'),
-  getMe: () => api.get('/users/me'),
+  getAll: () => api.get('/users').then((response) => {
+    response.data = normalizeUserList(response.data)
+    return response
+  }),
+  getMe: () => api.get('/users/me').then((response) => {
+    response.data = normalizeUserResponse(response.data)
+    return response
+  }),
   updateMe: (data: Partial<{ firstName: string; lastName: string; email: string }>) =>
     api.put('/users/me', data),
   updateRole: (id: string, role: string) => api.put(`/users/${id}/role`, { role }),
@@ -87,24 +117,24 @@ export const scenariosApi = {
   publish: (id: string) => api.patch(`/scenarios/${id}/finalize`),
 
   // Modules (via course-module controller)
-  createModule: (_scenarioId: string, data: object) =>
-    api.post('/course-modules', data),
+  createModule: (scenarioId: string, data: object) =>
+    api.post('/course-modules', { ...data, scenarioId }),
   updateModule: (_scenarioId: string, moduleId: string, data: object) =>
     api.put(`/course-modules/${moduleId}`, data),
   deleteModule: (_scenarioId: string, moduleId: string) =>
     api.delete(`/course-modules/${moduleId}`),
 
   // Sequences
-  createSequence: (_scenarioId: string, _moduleId: string, data: object) =>
-    api.post('/sequences', data),
+  createSequence: (_scenarioId: string, moduleId: string, data: object) =>
+    api.post('/sequences', { ...data, moduleId }),
   updateSequence: (_scenarioId: string, _moduleId: string, seqId: string, data: object) =>
     api.put(`/sequences/${seqId}`, data),
   deleteSequence: (_scenarioId: string, _moduleId: string, seqId: string) =>
     api.delete(`/sequences/${seqId}`),
 
   // Activities
-  createActivity: (_scenarioId: string, _moduleId: string, _seqId: string, data: object) =>
-    api.post('/activites', data),
+  createActivity: (_scenarioId: string, _moduleId: string, seqId: string, data: object) =>
+    api.post('/activites', { ...data, sequenceId: seqId }),
   updateActivity: (_scenarioId: string, _moduleId: string, _seqId: string, actId: string, data: object) =>
     api.put(`/activites/${actId}`, data),
   deleteActivity: (_scenarioId: string, _moduleId: string, _seqId: string, actId: string) =>
@@ -134,7 +164,7 @@ export const mediaApi = {
 // Backend: /quizzes
 export const quizApi = {
   getByActivity: (activityId: string) => api.get(`/quizzes/activite/${activityId}`),
-  create: (_activityId: string, data: object) => api.post('/quizzes', data),
+  create: (activityId: string, data: object) => api.post('/quizzes', { ...data, activityId }),
   update: (quizId: string, data: object) => api.put(`/quizzes/${quizId}`, data),
   delete: (quizId: string) => api.delete(`/quizzes/${quizId}`),
 }

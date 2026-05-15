@@ -11,11 +11,11 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variants: Record<NonNullable<ButtonProps['variant']>, string> = {
-  primary:   'bg-[#0F6B4A] hover:bg-[#12805A] text-[#FFF8EC] border-[#0F6B4A] hover:border-[#12805A] shadow-[0_12px_30px_rgba(5,12,14,0.22)]',
-  secondary: 'bg-[#1D2B27] hover:bg-[#243832] text-[#F6F0E6] border-[rgba(246,240,230,0.12)] hover:border-[rgba(246,240,230,0.2)]',
-  ghost:     'bg-transparent hover:bg-[rgba(246,240,230,0.06)] text-[#D7CCBA] border-transparent',
+  primary:   'bg-[var(--lux-primary)] hover:bg-[var(--lux-primary-hover)] text-[var(--lux-text-strong)] border-[var(--lux-primary)] hover:border-[var(--lux-primary-hover)] shadow-[0_12px_30px_rgba(5,12,14,0.22)]',
+  secondary: 'bg-[var(--lux-surface-soft)] hover:bg-[var(--lux-elevated)] text-[var(--lux-text)] border-[var(--lux-line)] hover:border-[var(--lux-line-strong)]',
+  ghost:     'bg-transparent hover:bg-[var(--lux-primary-soft)] text-[var(--lux-muted)] border-transparent',
   danger:    'bg-red-600/15 hover:bg-red-600/25 text-red-400 border-red-500/30 hover:border-red-500/50',
-  outline:   'bg-transparent hover:bg-[rgba(246,240,230,0.06)] text-[#F6F0E6] border-[rgba(246,240,230,0.18)] hover:border-[rgba(198,167,101,0.34)]',
+  outline:   'bg-transparent hover:bg-[var(--lux-primary-soft)] text-[var(--lux-text)] border-[var(--lux-line)] hover:border-[var(--lux-line-strong)]',
 }
 
 const sizes: Record<NonNullable<ButtonProps['size']>, string> = {
@@ -40,7 +40,7 @@ export function Button({
       className={cn(
         'inline-flex items-center justify-center border font-semibold',
         'transition-all duration-150 cursor-pointer select-none',
-        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F6B4A]/60 focus-visible:ring-offset-1 focus-visible:ring-offset-transparent',
+        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--lux-primary)] focus-visible:ring-offset-1 focus-visible:ring-offset-transparent',
         'disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none',
         variants[variant],
         sizes[size],

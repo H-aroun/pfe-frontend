@@ -21,7 +21,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   if (!user) return null
 
   return (
-    <div className="flex h-screen overflow-hidden bg-[#111A1F] text-[#F6F0E6]">
+    <div className="flex h-screen overflow-hidden bg-[var(--lux-bg)] text-[var(--lux-text)]">
       {/* Sidebar — fixed height, internal scroll */}
       <Sidebar />
 

@@ -12,12 +12,17 @@ import { useAuth } from '@/context/AuthContext'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 import { cn } from '@/lib/utils'
+import { ThemeToggle } from '@/components/theme/ThemeToggle'
 
 const schema = z.object({
   firstName: z.string().min(2, 'Please enter your first name'),
   lastName: z.string().min(2, 'Please enter your last name'),
   email: z.string().email('Please enter a valid email address'),
-  password: z.string().min(8, 'Use at least 8 characters'),
+  password: z.string()
+    .min(8, 'Use at least 8 characters')
+    .regex(/(?=.*[A-Z])(?=.*\d)/, {
+      message: 'Password must contain at least one uppercase letter and one number',
+    }),
 })
 type FormData = z.infer<typeof schema>
 
@@ -48,30 +53,34 @@ export default function RegisterPage() {
     try {
       await registerUser(data)
       toast.success('Account created')
-      router.push('/auth/login')
+      router.push('/dashboard')
     } catch {
       toast.error('Registration failed. This email may already be in use.')
     }
   }
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-[#111A1F] px-4 py-16 text-[#F6F0E6]">
+    <div className="relative flex min-h-screen flex-col items-center justify-center bg-[var(--lux-bg)] px-4 py-16 text-[var(--lux-text)]">
+      <div className="absolute right-4 top-4 sm:right-6 sm:top-6">
+        <ThemeToggle />
+      </div>
+
       <Link href="/" className="mb-10 flex items-center gap-3">
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#0F6B4A]">
-          <BookOpen size={17} className="text-[#FFF8EC]" />
+        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--lux-primary)]">
+          <BookOpen size={17} className="text-[var(--lux-text-strong)]" />
         </div>
-        <span className="text-lg font-semibold text-[#FFF8EC]">
+        <span className="text-lg font-semibold text-[var(--lux-text-strong)]">
           EduScenario
         </span>
       </Link>
 
       <div className="w-full max-w-[480px]">
-        <div className="rounded-2xl border border-[rgba(246,240,230,0.14)] bg-[#182420] p-6 shadow-[0_24px_70px_rgba(5,12,14,0.28)] sm:p-8">
+        <div className="rounded-2xl border border-[var(--lux-line)] bg-[var(--lux-surface)] p-6 shadow-[var(--lux-shadow)] sm:p-8">
           <div className="mb-8 text-center">
-            <h1 className="text-2xl font-semibold text-[#FFF8EC]">
+            <h1 className="text-2xl font-semibold text-[var(--lux-text-strong)]">
               Create your account
             </h1>
-            <p className="mt-2 text-sm text-[#B9AD9C]">
+            <p className="mt-2 text-sm text-[var(--lux-muted)]">
               Start building learning scenarios.
             </p>
           </div>
@@ -113,7 +122,7 @@ export default function RegisterPage() {
                 id="password"
                 label="Password"
                 type={showPass ? 'text' : 'password'}
-                placeholder="At least 8 characters"
+                placeholder="At least 8 characters with uppercase letter and number"
                 icon={<Lock size={14} />}
                 error={errors.password?.message}
                 autoComplete="new-password"
@@ -121,7 +130,7 @@ export default function RegisterPage() {
                   <button
                     type="button"
                     onClick={() => setShowPass(v => !v)}
-                    className="p-0.5 text-[#8E9C93] transition-colors hover:text-[#F6F0E6]"
+                    className="p-0.5 text-[var(--lux-muted-soft)] transition-colors hover:text-[var(--lux-text)]"
                     aria-label={showPass ? 'Hide password' : 'Show password'}
                   >
                     {showPass ? <EyeOff size={14} /> : <Eye size={14} />}
@@ -138,12 +147,12 @@ export default function RegisterPage() {
                         key={i}
                         className={cn(
                           'h-1 flex-1 rounded-full transition-all duration-300',
-                          i <= pwStrength ? strengthMap[pwStrength]!.cls : 'bg-[rgba(246,240,230,0.10)]'
+                          i <= pwStrength ? strengthMap[pwStrength]!.cls : 'bg-[var(--lux-line)]'
                         )}
                       />
                     ))}
                   </div>
-                  <span className="w-10 text-right text-[11px] text-[#8E9C93]">
+                  <span className="w-10 text-right text-[11px] text-[var(--lux-muted-soft)]">
                     {strengthMap[pwStrength]?.label}
                   </span>
                 </div>
@@ -156,11 +165,11 @@ export default function RegisterPage() {
           </form>
         </div>
 
-        <p className="mt-6 text-center text-sm text-[#B9AD9C]">
+        <p className="mt-6 text-center text-sm text-[var(--lux-muted)]">
           Already have an account?{' '}
           <Link
             href="/auth/login"
-            className="font-semibold text-[#C6A765] transition-colors hover:text-[#D7BD7A]"
+            className="font-semibold text-[var(--lux-gold)] transition-colors hover:opacity-80"
           >
             Log in
           </Link>

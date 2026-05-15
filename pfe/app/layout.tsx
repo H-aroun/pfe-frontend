@@ -15,9 +15,23 @@ export const metadata: Metadata = {
   keywords: ['education', 'scenarios', 'pedagogy', 'e-learning', 'SCORM'],
 }
 
+const themeScript = `
+try {
+  const theme = localStorage.getItem('edu_theme')
+  if (theme === 'dark' || theme === 'light') {
+    document.documentElement.dataset.theme = theme
+  } else {
+    document.documentElement.removeAttribute('data-theme')
+  }
+} catch {}
+`
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className={`${inter.variable} antialiased`}>
         <Providers>{children}</Providers>
       </body>

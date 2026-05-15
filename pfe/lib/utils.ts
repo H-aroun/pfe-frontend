@@ -6,12 +6,22 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function formatDate(date: string | Date, pattern = 'MMM d, yyyy') {
-  return format(new Date(date), pattern)
+export function formatDate(date?: string | Date | null, pattern = 'MMM d, yyyy') {
+  if (!date) return '-'
+
+  const value = new Date(date)
+  if (Number.isNaN(value.getTime())) return '-'
+
+  return format(value, pattern)
 }
 
-export function timeAgo(date: string | Date) {
-  return formatDistanceToNow(new Date(date), { addSuffix: true })
+export function timeAgo(date?: string | Date | null) {
+  if (!date) return '-'
+
+  const value = new Date(date)
+  if (Number.isNaN(value.getTime())) return '-'
+
+  return formatDistanceToNow(value, { addSuffix: true })
 }
 
 export function formatBytes(bytes: number) {

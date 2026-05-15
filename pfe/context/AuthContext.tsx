@@ -8,8 +8,8 @@ import {
   type ReactNode,
 } from 'react'
 import { authApi } from '@/lib/api'
-import { setAuth, clearAuth, getStoredUser, getToken } from '@/lib/auth'
-import type { User, UserRole } from '@/types'
+import { AUTH_CHANGED_EVENT, setAuth, clearAuth, getStoredUser, getToken, normalizeUser } from '@/lib/auth'
+import type { User } from '@/types'
 
 interface AuthContextValue {
   user: User | null
@@ -26,7 +26,6 @@ interface RegisterData {
   lastName: string
   email: string
   password: string
-  role?: string
 }
 
 interface AuthSnapshot {
@@ -54,11 +53,16 @@ const authListeners = new Set<() => void>()
 
 function subscribeAuth(listener: () => void) {
   authListeners.add(listener)
-  return () => authListeners.delete(listener)
-}
+  if (typeof window !== 'undefined') {
+    window.addEventListener(AUTH_CHANGED_EVENT, listener)
+  }
 
-function emitAuthChange() {
-  authListeners.forEach(listener => listener())
+  return () => {
+    authListeners.delete(listener)
+    if (typeof window !== 'undefined') {
+      window.removeEventListener(AUTH_CHANGED_EVENT, listener)
+    }
+  }
 }
 
 function readClientAuthSnapshot(): AuthSnapshot {
@@ -75,42 +79,6 @@ function readClientAuthSnapshot(): AuthSnapshot {
     isLoading: false,
   }
   return cachedAuthSnapshot
-}
-
-/**
- * Normalise whatever shape the backend sends into the frontend User type.
- *
- * Backend currently returns:
- *   { userInfo: { id, name, email, role: { name }, dateInscription }, access_token }
- *
- * Frontend expects:
- *   User { id: string, firstName, lastName, email, role: 'ADMIN'|'TEACHER', createdAt }
- */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function normaliseUser(raw: any): User {
-  // Role: might be an object { name } or a plain string
-  let role: UserRole = 'TEACHER'
-  if (raw.role) {
-    const roleName = (typeof raw.role === 'object' ? raw.role.name : raw.role) as string
-    role = roleName.toUpperCase() as UserRole
-  }
-
-  // Name: might be firstName+lastName or a single 'name' field
-  const firstName = raw.firstName ?? (raw.name as string | undefined)?.split(' ')[0] ?? ''
-  const lastName =
-    raw.lastName ??
-    (raw.name as string | undefined)?.split(' ').slice(1).join(' ') ??
-    ''
-
-  return {
-    id: String(raw.id),
-    firstName,
-    lastName,
-    email: raw.email as string,
-    role,
-    createdAt: (raw.createdAt ?? raw.dateInscription ?? new Date().toISOString()) as string,
-    updatedAt: raw.updatedAt as string | undefined,
-  }
 }
 
 export function AuthProvider({ children }: { children: ReactNode }) {
@@ -131,18 +99,32 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       throw new Error('Invalid response from server: missing user or token')
     }
 
-    const normUser = normaliseUser(rawUser)
+    const normUser = normalizeUser(rawUser)
     setAuth(jwt, normUser)
-    emitAuthChange()
   }, [])
 
   const register = useCallback(async (formData: RegisterData) => {
-    await authApi.register(formData)
-  }, [])
+    const response = await authApi.register({
+      name: `${formData.firstName.trim()} ${formData.lastName.trim()}`,
+      email: formData.email,
+      password: formData.password,
+    })
+
+    const data = response.data ?? {}
+    const rawUser = data.userInfo ?? data.user
+    const jwt: string = data.access_token ?? data.accessToken ?? ''
+
+    if (rawUser && jwt) {
+      const normUser = normalizeUser(rawUser)
+      setAuth(jwt, normUser)
+      return
+    }
+
+    await login(formData.email, formData.password)
+  }, [login])
 
   const logout = useCallback(() => {
     clearAuth()
-    emitAuthChange()
     window.location.href = '/auth/login'
   }, [])
 

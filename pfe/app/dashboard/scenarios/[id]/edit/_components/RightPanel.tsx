@@ -5,6 +5,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { toast } from 'react-hot-toast'
 import { Globe, Lock, Users, Trash2, Download, ChevronDown } from 'lucide-react'
 import { scenariosApi, usersApi, scormApi } from '@/lib/api'
+import { useAuth } from '@/context/AuthContext'
 import { Button } from '@/components/ui/Button'
 import { Avatar } from '@/components/ui/Avatar'
 import { StatusBadge } from '@/components/ui/Badge'
@@ -18,6 +19,7 @@ interface Props {
 
 export function RightPanel({ scenarioId }: Props) {
   const qc = useQueryClient()
+  const { isAdmin } = useAuth()
   const [tab, setTab] = useState<'info' | 'share'>('info')
   const [shareUserId, setShareUserId] = useState('')
   const [permission, setPermission] = useState<'READ' | 'EDIT'>('READ')
@@ -37,7 +39,7 @@ export function RightPanel({ scenarioId }: Props) {
   const { data: users } = useQuery<User[]>({
     queryKey: ['users'],
     queryFn: () => usersApi.getAll().then(r => r.data),
-    enabled: tab === 'share',
+    enabled: tab === 'share' && isAdmin,
   })
 
   const { mutate: addShare, isPending: sharing } = useMutation({
@@ -64,7 +66,7 @@ export function RightPanel({ scenarioId }: Props) {
     setExporting(true)
     try {
       const res = await scormApi.export(scenarioId)
-      downloadBlob(res.data, `${scenario?.title ?? 'scenario'}.zip`)
+      downloadBlob(res.data, `${scenario?.title ?? scenario?.titre ?? 'scenario'}.zip`)
       toast.success('SCORM package downloaded')
     } catch {
       toast.error('Export failed')
@@ -75,7 +77,6 @@ export function RightPanel({ scenarioId }: Props) {
 
   return (
     <div className="flex flex-col h-full">
-      {/* Tab bar */}
       <div className="flex border-b border-white/7">
         {(['info', 'share'] as const).map(t => (
           <button key={t} onClick={() => setTab(t)}
@@ -90,13 +91,11 @@ export function RightPanel({ scenarioId }: Props) {
       <div className="flex-1 overflow-y-auto p-3">
         {tab === 'info' && scenario && (
           <div className="space-y-4">
-            {/* Status */}
             <div className="space-y-1">
               <p className="text-[10px] text-slate-500 uppercase">Status</p>
               <StatusBadge status={scenario.status} />
             </div>
 
-            {/* Visibility */}
             <div className="space-y-1">
               <p className="text-[10px] text-slate-500 uppercase">Visibility</p>
               <div className="flex items-center gap-1.5 text-xs text-slate-300">
@@ -105,17 +104,15 @@ export function RightPanel({ scenarioId }: Props) {
               </div>
             </div>
 
-            {/* Stats */}
             <div className="space-y-1">
               <p className="text-[10px] text-slate-500 uppercase">Structure</p>
               <div className="text-xs text-slate-400 space-y-0.5">
                 <p>{scenario.modules?.length ?? 0} modules</p>
                 <p>{scenario.modules?.reduce((a, m) => a + (m.sequences?.length ?? 0), 0) ?? 0} sequences</p>
-                <p>{scenario.modules?.reduce((a, m) => a + m.sequences?.reduce((b, s) => b + (s.activities?.length ?? 0), 0), 0) ?? 0} activities</p>
+                <p>{scenario.modules?.reduce((a, m) => a + (m.sequences?.reduce((b, s) => b + (s.activities?.length ?? 0), 0) ?? 0), 0) ?? 0} activities</p>
               </div>
             </div>
 
-            {/* Actions */}
             <div className="space-y-2 pt-2">
               {scenario.status === 'DRAFT' && (
                 <Button size="sm" className="w-full" onClick={() => publish()}>
@@ -137,44 +134,50 @@ export function RightPanel({ scenarioId }: Props) {
 
         {tab === 'share' && (
           <div className="space-y-4">
-            {/* Add collaborator */}
             <div className="space-y-2">
               <p className="text-[10px] text-slate-500 uppercase">Add collaborator</p>
-              <div className="relative">
-                <select
-                  value={shareUserId}
-                  onChange={e => setShareUserId(e.target.value)}
-                  className="w-full appearance-none bg-white/5 border border-white/10 rounded-xl text-slate-300 text-xs pl-3 pr-8 py-2 focus:outline-none focus:border-[#0F6B4A] transition-all"
-                >
-                  <option value="">Select user…</option>
-                  {(users ?? []).map((u: User) => (
-                    <option key={u.id} value={u.id}>{u.firstName} {u.lastName}</option>
-                  ))}
-                </select>
-                <ChevronDown size={11} className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none" />
-              </div>
-              <div className="flex gap-1">
-                {(['READ', 'EDIT'] as const).map(p => (
-                  <button key={p} onClick={() => setPermission(p)}
-                    className={`flex-1 py-1.5 rounded-lg text-[11px] font-medium border transition-all ${permission === p
-                      ? 'border-[#0F6B4A] bg-[#0F6B4A]/18 text-[#83BFA1]'
-                      : 'border-white/10 text-slate-500 hover:border-white/20'}`}>
-                    {p}
-                  </button>
-                ))}
-              </div>
-              <Button
-                size="sm"
-                className="w-full"
-                onClick={() => addShare()}
-                disabled={!shareUserId}
-                loading={sharing}
-              >
-                <Users size={11} className="mr-1" /> Grant access
-              </Button>
+              {isAdmin ? (
+                <>
+                  <div className="relative">
+                    <select
+                      value={shareUserId}
+                      onChange={e => setShareUserId(e.target.value)}
+                      className="w-full appearance-none bg-white/5 border border-white/10 rounded-xl text-slate-300 text-xs pl-3 pr-8 py-2 focus:outline-none focus:border-[#0F6B4A] transition-all"
+                    >
+                      <option value="">Select user...</option>
+                      {(users ?? []).map((u: User) => (
+                        <option key={u.id} value={u.id}>{u.firstName} {u.lastName}</option>
+                      ))}
+                    </select>
+                    <ChevronDown size={11} className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none" />
+                  </div>
+                  <div className="flex gap-1">
+                    {(['READ', 'EDIT'] as const).map(p => (
+                      <button key={p} onClick={() => setPermission(p)}
+                        className={`flex-1 py-1.5 rounded-lg text-[11px] font-medium border transition-all ${permission === p
+                          ? 'border-[#0F6B4A] bg-[#0F6B4A]/18 text-[#83BFA1]'
+                          : 'border-white/10 text-slate-500 hover:border-white/20'}`}>
+                        {p}
+                      </button>
+                    ))}
+                  </div>
+                  <Button
+                    size="sm"
+                    className="w-full"
+                    onClick={() => addShare()}
+                    disabled={!shareUserId}
+                    loading={sharing}
+                  >
+                    <Users size={11} className="mr-1" /> Grant access
+                  </Button>
+                </>
+              ) : (
+                <p className="rounded-xl border border-white/10 bg-white/4 px-3 py-2 text-xs text-slate-500">
+                  Admin access is required to add collaborators.
+                </p>
+              )}
             </div>
 
-            {/* Current shares */}
             <div className="space-y-1">
               <p className="text-[10px] text-slate-500 uppercase">Current access</p>
               {loadingShares ? (

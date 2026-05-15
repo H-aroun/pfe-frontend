@@ -13,21 +13,21 @@ interface BadgeProps {
 }
 
 const variants: Record<BadgeVariant, string> = {
-  default: 'bg-[rgba(246,240,230,0.07)] text-[#D7CCBA] border-[rgba(246,240,230,0.12)]',
-  success: 'bg-[#0F6B4A]/20 text-[#83BFA1] border-[#0F6B4A]/45',
-  warning: 'bg-[#C6A765]/14 text-[#C6A765] border-[#C6A765]/35',
+  default: 'bg-[var(--lux-surface-soft)] text-[var(--lux-text)] border-[var(--lux-line)]',
+  success: 'bg-[var(--lux-primary-soft)] text-[var(--lux-primary-muted)] border-[var(--lux-primary)]',
+  warning: 'bg-[var(--lux-gold-soft)] text-[var(--lux-gold)] border-[var(--lux-line-strong)]',
   danger: 'bg-red-500/12 text-red-400 border-red-500/25',
-  info: 'bg-[#0F6B4A]/16 text-[#83BFA1] border-[#0F6B4A]/35',
-  purple: 'bg-[#C6A765]/12 text-[#C6A765] border-[#C6A765]/30',
+  info: 'bg-[var(--lux-primary-soft)] text-[var(--lux-primary-muted)] border-[var(--lux-primary)]',
+  purple: 'bg-[var(--lux-gold-soft)] text-[var(--lux-gold)] border-[var(--lux-line-strong)]',
 }
 
 const dotColors: Record<BadgeVariant, string> = {
-  default: 'bg-[#B9AD9C]',
-  success: 'bg-[#83BFA1]',
-  warning: 'bg-[#C6A765]',
+  default: 'bg-[var(--lux-muted)]',
+  success: 'bg-[var(--lux-primary-muted)]',
+  warning: 'bg-[var(--lux-gold)]',
   danger: 'bg-red-400',
-  info: 'bg-[#83BFA1]',
-  purple: 'bg-[#C6A765]',
+  info: 'bg-[var(--lux-primary-muted)]',
+  purple: 'bg-[var(--lux-gold)]',
 }
 
 export function Badge({ children, variant = 'default', size = 'sm', className, dot }: BadgeProps) {

@@ -8,10 +8,11 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { toast } from 'react-hot-toast'
 import { Mail, Lock, Eye, EyeOff, BookOpen } from 'lucide-react'
-import { useAuth } from '@/context/AuthContext'
+//import { useAuth } from '@/context/AuthContext'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 import { login } from '@/action/login'
+import { ThemeToggle } from '@/components/theme/ThemeToggle'
 
 
 const schema = z.object({
@@ -32,41 +33,42 @@ export default function LoginPage() {
   } = useForm<FormData>({ resolver: zodResolver(schema) })
 
   const onSubmit = async (data: FormData) => {
-    console.log('Form data:', data)
+    
     try {
-      console.log('Submitting login form with data:', data)
-      const result = await login(data.email, data.password)
-      console.log('Login successful:', result)
-      if (result) {
+      
+      await login(data.email, data.password)
+      
+     
       toast.success('Logged in')
       router.push('/dashboard')}
-      else {
-        toast.error('Login failed. Please check your credentials and try again.')
-
-      }
-    } catch {
+      
+    catch {
       toast.error('Incorrect email or password.')
     }
   }
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-[#111A1F] px-4 py-16 text-[#F6F0E6]">
+    <div className="relative flex min-h-screen flex-col items-center justify-center bg-[var(--lux-bg)] px-4 py-16 text-[var(--lux-text)]">
+      <div className="absolute right-4 top-4 sm:right-6 sm:top-6">
+        <ThemeToggle />
+      </div>
+
       <Link href="/" className="mb-10 flex items-center gap-3">
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#0F6B4A]">
-          <BookOpen size={17} className="text-[#FFF8EC]" />
+        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--lux-primary)]">
+          <BookOpen size={17} className="text-[var(--lux-text-strong)]" />
         </div>
-        <span className="text-lg font-semibold text-[#FFF8EC]">
+        <span className="text-lg font-semibold text-[var(--lux-text-strong)]">
           EduScenario
         </span>
       </Link>
 
       <div className="w-full max-w-[400px]">
-        <div className="rounded-2xl border border-[rgba(246,240,230,0.14)] bg-[#182420] p-6 shadow-[0_24px_70px_rgba(5,12,14,0.28)] sm:p-8">
+        <div className="rounded-2xl border border-[var(--lux-line)] bg-[var(--lux-surface)] p-6 shadow-[var(--lux-shadow)] sm:p-8">
           <div className="mb-8 text-center">
-            <h1 className="text-2xl font-semibold text-[#FFF8EC]">
+            <h1 className="text-2xl font-semibold text-[var(--lux-text-strong)]">
               Log in to EduScenario
             </h1>
-            <p className="mt-2 text-sm text-[#B9AD9C]">
+            <p className="mt-2 text-sm text-[var(--lux-muted)]">
               Continue building learning scenarios.
             </p>
           </div>
@@ -93,9 +95,9 @@ export default function LoginPage() {
               autoComplete="current-password"
               iconRight={
                 <button
-                  type="submit"
+                  type="button"
                   onClick={() => setShowPass(v => !v)}
-                    className="p-0.5 text-[#8E9C93] transition-colors hover:text-[#F6F0E6]"
+                    className="p-0.5 text-[var(--lux-muted-soft)] transition-colors hover:text-[var(--lux-text)]"
                   aria-label={showPass ? 'Hide password' : 'Show password'}
                 >
                   {showPass ? <EyeOff size={14} /> : <Eye size={14} />}
@@ -110,11 +112,11 @@ export default function LoginPage() {
           </form>
         </div>
 
-        <p className="mt-6 text-center text-sm text-[#B9AD9C]">
+        <p className="mt-6 text-center text-sm text-[var(--lux-muted)]">
           {"Don't have an account? "}
           <Link
             href="/auth/register"
-            className="font-semibold text-[#C6A765] transition-colors hover:text-[#D7BD7A]"
+            className="font-semibold text-[var(--lux-gold)] transition-colors hover:opacity-80"
           >
             Create a free account
           </Link>

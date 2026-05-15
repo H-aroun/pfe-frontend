@@ -1,6 +1,5 @@
 'use client'
 
-import { useState } from 'react'
 import Link from 'next/link'
 import {
   ArrowRight,
@@ -10,57 +9,33 @@ import {
   CheckCircle,
   Layers,
   Library,
-  Moon,
   Shield,
-  Sun,
   Users,
 } from 'lucide-react'
+import { ThemeToggle } from '@/components/theme/ThemeToggle'
 
-const themes = {
-  dark: {
-    page: '#111A1F',
-    pageAlt: '#162220',
-    surface: '#182420',
-    surfaceSoft: '#1D2B27',
-    elevated: '#22332E',
-    text: '#F6F0E6',
-    textStrong: '#FFF8EC',
-    muted: '#B9AD9C',
-    mutedSoft: '#8E9C93',
-    line: 'rgba(246, 240, 230, 0.14)',
-    lineStrong: 'rgba(198, 167, 101, 0.30)',
-    primary: '#0F6B4A',
-    primaryHover: '#12805A',
-    primarySoft: 'rgba(15, 107, 74, 0.22)',
-    primaryMuted: '#83BFA1',
-    gold: '#C6A765',
-    goldSoft: 'rgba(198, 167, 101, 0.12)',
-    shadow: '0 34px 90px rgba(5, 12, 14, 0.42)',
-  },
-  light: {
-    page: '#F4EFE5',
-    pageAlt: '#FBF7EF',
-    surface: '#FFFDF8',
-    surfaceSoft: '#F7F1E6',
-    elevated: '#F0E7D8',
-    text: '#1F1B16',
-    textStrong: '#17130F',
-    muted: '#756B5E',
-    mutedSoft: '#9B8D7A',
-    line: '#DED4C2',
-    lineStrong: '#D8C592',
-    primary: '#0F6B4A',
-    primaryHover: '#12805A',
-    primarySoft: 'rgba(15, 107, 74, 0.12)',
-    primaryMuted: '#517E68',
-    gold: '#BFA46A',
-    goldSoft: 'rgba(191, 164, 106, 0.16)',
-    shadow: '0 34px 90px rgba(31, 27, 22, 0.14)',
-  },
-}
+const theme = {
+  page: 'var(--lux-bg)',
+  pageAlt: 'var(--lux-bg-alt)',
+  surface: 'var(--lux-surface)',
+  surfaceSoft: 'var(--lux-surface-soft)',
+  elevated: 'var(--lux-elevated)',
+  text: 'var(--lux-text)',
+  textStrong: 'var(--lux-text-strong)',
+  muted: 'var(--lux-muted)',
+  mutedSoft: 'var(--lux-muted-soft)',
+  line: 'var(--lux-line)',
+  lineStrong: 'var(--lux-line-strong)',
+  primary: 'var(--lux-primary)',
+  primaryHover: 'var(--lux-primary-hover)',
+  primarySoft: 'var(--lux-primary-soft)',
+  primaryMuted: 'var(--lux-primary-muted)',
+  gold: 'var(--lux-gold)',
+  goldSoft: 'var(--lux-gold-soft)',
+  shadow: 'var(--lux-shadow)',
+} as const
 
-type ThemeName = keyof typeof themes
-type Theme = (typeof themes)[ThemeName]
+type Theme = typeof theme
 
 const features = [
   {
@@ -265,10 +240,6 @@ function ProductPreview({ theme }: { theme: Theme }) {
 }
 
 export default function HomePage() {
-  const [themeName, setThemeName] = useState<ThemeName>('dark')
-  const theme = themes[themeName]
-  const nextTheme = themeName === 'dark' ? 'light' : 'dark'
-
   return (
     <div
       className="min-h-screen overflow-x-hidden transition-colors duration-300"
@@ -302,17 +273,7 @@ export default function HomePage() {
             >
               Log in
             </Link>
-            <button
-              type="button"
-              onClick={() => setThemeName(nextTheme)}
-              className="inline-flex h-10 items-center gap-2 rounded-full border px-3 text-sm font-semibold transition-colors"
-              style={{ borderColor: theme.line, backgroundColor: theme.surfaceSoft, color: theme.textStrong }}
-              title={`Switch to ${nextTheme} theme`}
-              aria-label={`Switch to ${nextTheme} theme`}
-            >
-              {themeName === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
-              <span className="hidden sm:inline">{nextTheme === 'dark' ? 'Dark' : 'Light'}</span>
-            </button>
+            <ThemeToggle />
             <Link
               href="/auth/register"
               className="inline-flex shrink-0 items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold shadow-[0_12px_30px_rgba(5,12,14,0.22)] transition-colors sm:px-5"

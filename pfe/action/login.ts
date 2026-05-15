@@ -1,11 +1,41 @@
+import { normalizeUser, setAuth } from '@/lib/auth'
+
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'
+
+interface LoginResponse {
+  access_token?: string
+  accessToken?: string
+  userInfo?: {
+    id: string | number
+    email: string
+    role?: string | { name?: string }
+    firstName?: string
+    lastName?: string
+    name?: string
+    createdAt?: string
+    dateInscription?: string
+    updatedAt?: string
+  }
+  user?: {
+    id: string | number
+    email: string
+    role?: string | { name?: string }
+    firstName?: string
+    lastName?: string
+    name?: string
+    createdAt?: string
+    dateInscription?: string
+    updatedAt?: string
+  }
+}
+
 export async function login(email: string, password: string) {
-    console.log('Attempting login with email:', email)
-    console.log('Attempting login with password:', password)
-  const response = await fetch('http://localhost:3001/auth/login', {
+  const response = await fetch(`${BASE_URL}/auth/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
+    credentials: 'include',
     body: JSON.stringify({ email, password }),
   })
 
@@ -13,5 +43,15 @@ export async function login(email: string, password: string) {
     throw new Error('Login failed')
   }
 
-  return response.json()
+  const data = (await response.json()) as LoginResponse
+  const rawUser = data.userInfo ?? data.user
+  const token = data.access_token ?? data.accessToken
+
+  if (!rawUser || !token) {
+    throw new Error('Invalid response from server: missing user or token')
+  }
+
+  setAuth(token, normalizeUser(rawUser))
+
+  return data
 }

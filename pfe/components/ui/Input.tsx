@@ -38,7 +38,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className="flex flex-col gap-1.5">
         {label && (
-          <label htmlFor={id} className="text-sm font-medium text-[#D7CCBA]">
+          <label htmlFor={id} className="text-sm font-medium text-[var(--lux-text)]">
             {label}
           </label>
         )}
@@ -46,7 +46,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         <div className="relative">
           {/* Left icon — absolutely centred, pointer-events disabled */}
           {icon && (
-            <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-[#8E9C93]">
+            <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-[var(--lux-muted-soft)]">
               {icon}
             </span>
           )}
@@ -58,15 +58,15 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             style={{ paddingLeft, paddingRight, ...style }}
             className={cn(
               // Base layout & colour
-              'w-full rounded-xl border bg-[#182420] text-sm text-[#F6F0E6]',
-              'placeholder:text-[#8E9C93]',
+              'w-full rounded-xl border bg-[var(--lux-surface)] text-sm text-[var(--lux-text)]',
+              'placeholder:text-[var(--lux-muted-soft)]',
               'h-11 transition-all duration-150',
               // Focus ring
-              'focus:outline-none focus:border-[#0F6B4A] focus:ring-2 focus:ring-[#0F6B4A]/25',
+              'focus:outline-none focus:border-[var(--lux-primary)] focus:ring-2 focus:ring-[var(--lux-primary)]',
               // Validation states
               error
                 ? 'border-[#EF4444]/50 focus:border-[#EF4444] focus:ring-[#EF4444]/20'
-                : 'border-[rgba(246,240,230,0.12)]',
+                : 'border-[var(--lux-line)]',
               // Disabled
               'disabled:opacity-50 disabled:cursor-not-allowed',
               className
@@ -76,7 +76,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 
           {/* Right icon */}
           {iconRight && (
-            <span className="absolute inset-y-0 right-0 flex items-center pr-3.5 text-[#8E9C93]">
+            <span className="absolute inset-y-0 right-0 flex items-center pr-3.5 text-[var(--lux-muted-soft)]">
               {iconRight}
             </span>
           )}
@@ -90,7 +90,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         )}
         {/* Hint (shown only when no error) */}
         {hint && !error && (
-          <p className="text-xs text-[#8E9C93]">{hint}</p>
+          <p className="text-xs text-[var(--lux-muted-soft)]">{hint}</p>
         )}
       </div>
     )

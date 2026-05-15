@@ -12,7 +12,7 @@ const sizes = { sm: 'h-4 w-4', md: 'h-6 w-6', lg: 'h-10 w-10' }
 export function Spinner({ size = 'md', className }: SpinnerProps) {
   return (
     <svg
-      className={cn('animate-spin text-[#0F6B4A]', sizes[size], className)}
+      className={cn('animate-spin text-[var(--lux-primary)]', sizes[size], className)}
       fill="none"
       viewBox="0 0 24 24"
     >
@@ -24,11 +24,11 @@ export function Spinner({ size = 'md', className }: SpinnerProps) {
 
 export function PageLoader() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#111A1F]">
+    <div className="min-h-screen flex items-center justify-center bg-[var(--lux-bg)]">
       <div className="flex flex-col items-center gap-4">
         <div className="relative">
-          <div className="h-12 w-12 rounded-2xl bg-[#0F6B4A] flex items-center justify-center">
-            <span className="text-[#FFF8EC] font-bold text-xl">E</span>
+          <div className="h-12 w-12 rounded-2xl bg-[var(--lux-primary)] flex items-center justify-center">
+            <span className="text-[var(--lux-text-strong)] font-bold text-xl">E</span>
           </div>
           <Spinner size="lg" className="absolute -inset-1 text-[#C6A765]/40" />
         </div>

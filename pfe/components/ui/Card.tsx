@@ -16,9 +16,9 @@ export function Card({ children, className, hover, onClick, as: Tag = 'div' }: C
     <Tag
       onClick={onClick}
       className={cn(
-        'bg-[#182420] border border-[rgba(246,240,230,0.12)] rounded-2xl',
+        'bg-[var(--lux-surface)] border border-[var(--lux-line)] rounded-2xl',
         'shadow-[0_18px_48px_rgba(5,12,14,0.18)]',
-        hover && 'transition-all duration-200 hover:border-[rgba(198,167,101,0.30)] hover:shadow-[0_26px_70px_rgba(5,12,14,0.28)] hover:-translate-y-0.5 cursor-pointer',
+        hover && 'transition-all duration-200 hover:border-[var(--lux-line-strong)] hover:shadow-[0_26px_70px_rgba(5,12,14,0.28)] hover:-translate-y-0.5 cursor-pointer',
         onClick && 'cursor-pointer',
         className
       )}
@@ -33,7 +33,7 @@ export function CardHeader({ children, className }: CardHeaderProps) {
   return (
     <div className={cn(
       'px-5 py-4 flex items-center justify-between',
-      'border-b border-[rgba(246,240,230,0.10)]',
+      'border-b border-[var(--lux-line)]',
       className
     )}>
       {children}

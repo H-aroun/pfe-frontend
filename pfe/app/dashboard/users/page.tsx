@@ -15,6 +15,18 @@ import { useEffect } from 'react'
 import { formatDate } from '@/lib/utils'
 import type { User } from '@/types'
 
+function getUserName(user: User) {
+  const firstName = user.firstName ?? ''
+  const lastName = user.lastName ?? ''
+  const fullName = `${firstName} ${lastName}`.trim()
+
+  return {
+    firstName,
+    lastName,
+    fullName: fullName || user.email,
+  }
+}
+
 export default function UsersPage() {
   const { isAdmin } = useAuth()
   const router = useRouter()
@@ -62,54 +74,63 @@ export default function UsersPage() {
           ) : !users?.length ? (
             <EmptyState icon={<Users size={22} />} title="No users found" />
           ) : (
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
+            <div className="-mx-5 overflow-x-auto px-5">
+              <table className="min-w-[760px] w-full table-fixed text-sm">
                 <thead>
                   <tr className="border-b border-white/6">
-                    {['User', 'Email', 'Role', 'Joined', 'Actions'].map(h => (
-                      <th key={h} className="text-left text-xs font-medium text-slate-500 pb-3 pr-4 first:pl-0">{h}</th>
-                    ))}
+                    <th className="w-[30%] pb-3 pr-4 text-left text-xs font-medium text-slate-500">User</th>
+                    <th className="w-[30%] pb-3 pr-4 text-left text-xs font-medium text-slate-500">Email</th>
+                    <th className="w-[14%] pb-3 pr-4 text-left text-xs font-medium text-slate-500">Role</th>
+                    <th className="w-[14%] pb-3 pr-4 text-left text-xs font-medium text-slate-500">Joined</th>
+                    <th className="w-[12%] pb-3 text-right text-xs font-medium text-slate-500">Actions</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-white/5">
-                  {users.map((u: User) => (
-                    <tr key={u.id} className="hover:bg-white/2 group">
-                      <td className="py-3 pr-4">
-                        <div className="flex items-center gap-2.5">
-                          <Avatar firstName={u.firstName} lastName={u.lastName} size="sm" />
-                          <span className="font-medium text-slate-200">{u.firstName} {u.lastName}</span>
-                        </div>
-                      </td>
-                      <td className="py-3 pr-4 text-slate-400 text-xs">{u.email}</td>
-                      <td className="py-3 pr-4">
-                        <StatusBadge status={u.role} />
-                      </td>
-                      <td className="py-3 pr-4 text-slate-500 text-xs">{formatDate(u.createdAt)}</td>
-                      <td className="py-3">
-                        <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                          {/* Role toggle */}
-                          <div className="relative">
-                            <select
-                              value={u.role}
-                              onChange={e => changeRole({ id: u.id, role: e.target.value })}
-                              className="appearance-none bg-white/5 border border-white/10 rounded-lg text-slate-300 text-xs pl-2 pr-6 py-1.5 focus:outline-none focus:border-[#0F6B4A] transition-all cursor-pointer"
-                            >
-                              <option value="TEACHER">Teacher</option>
-                              <option value="ADMIN">Admin</option>
-                            </select>
-                            <ChevronDown size={11} className="absolute right-1.5 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none" />
+                  {users.map((u: User) => {
+                    const { firstName, lastName, fullName } = getUserName(u)
+
+                    return (
+                      <tr key={u.id} className="group hover:bg-white/2">
+                        <td className="py-3 pr-4">
+                          <div className="flex min-w-0 items-center gap-2.5">
+                            <Avatar firstName={firstName} lastName={lastName} name={fullName} size="sm" />
+                            <span className="min-w-0 truncate font-medium text-slate-200">{fullName}</span>
                           </div>
-                          <button
-                            onClick={() => { if (confirm(`Delete ${u.firstName}?`)) deleteUser(u.id) }}
-                            className="p-1.5 rounded-lg text-slate-600 hover:text-red-400 hover:bg-red-500/10 transition-colors"
-                            title="Delete user"
-                          >
-                            <Trash2 size={13} />
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
+                        </td>
+                        <td className="py-3 pr-4 text-xs text-slate-400">
+                          <span className="block truncate">{u.email}</span>
+                        </td>
+                        <td className="py-3 pr-4">
+                          <StatusBadge status={u.role} />
+                        </td>
+                        <td className="py-3 pr-4 text-xs text-slate-500">{formatDate(u.createdAt)}</td>
+                        <td className="py-3">
+                          <div className="flex items-center justify-end gap-2">
+                            <div className="relative">
+                              <select
+                                value={u.role}
+                                onChange={e => changeRole({ id: u.id, role: e.target.value })}
+                                className="h-8 appearance-none rounded-lg border border-white/10 bg-white/5 pl-2 pr-6 text-xs text-slate-300 transition-all cursor-pointer focus:outline-none focus:border-[#0F6B4A]"
+                                aria-label={`Change role for ${fullName}`}
+                              >
+                                <option value="TEACHER">Teacher</option>
+                                <option value="ADMIN">Admin</option>
+                              </select>
+                              <ChevronDown size={11} className="pointer-events-none absolute right-1.5 top-1/2 -translate-y-1/2 text-slate-500" />
+                            </div>
+                            <button
+                              onClick={() => { if (confirm(`Delete ${fullName}?`)) deleteUser(u.id) }}
+                              className="flex h-8 w-8 items-center justify-center rounded-lg text-slate-500 transition-colors hover:bg-red-500/10 hover:text-red-400"
+                              title="Delete user"
+                              aria-label={`Delete ${fullName}`}
+                            >
+                              <Trash2 size={13} />
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    )
+                  })}
                 </tbody>
               </table>
             </div>

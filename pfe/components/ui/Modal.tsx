@@ -42,11 +42,11 @@ export function Modal({ open, onClose, title, children, size = 'md', className }
     <div
       ref={overlayRef}
       onClick={(e) => { if (e.target === overlayRef.current) onClose() }}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#081012]/70 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/55 backdrop-blur-sm"
     >
       <div
         className={cn(
-          'w-full bg-[#182420] border border-[rgba(246,240,230,0.14)] rounded-2xl shadow-2xl',
+          'w-full bg-[var(--lux-surface)] border border-[var(--lux-line)] rounded-2xl shadow-2xl',
           'transition-all duration-200',
           sizes[size],
           className
@@ -54,11 +54,11 @@ export function Modal({ open, onClose, title, children, size = 'md', className }
         style={{ animation: 'modal-pop 0.18s ease-out both' }}
       >
         {title && (
-          <div className="flex items-center justify-between px-6 py-4 border-b border-[rgba(246,240,230,0.10)]">
-            <h2 className="text-base font-semibold text-[#F6F0E6]">{title}</h2>
+          <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--lux-line)]">
+            <h2 className="text-base font-semibold text-[var(--lux-text)]">{title}</h2>
             <button
               onClick={onClose}
-              className="p-1.5 rounded-lg hover:bg-[rgba(246,240,230,0.08)] text-[#B9AD9C] hover:text-[#F6F0E6] transition-colors"
+              className="p-1.5 rounded-lg hover:bg-[var(--lux-primary-soft)] text-[var(--lux-muted)] hover:text-[var(--lux-text)] transition-colors"
             >
               <X size={16} />
             </button>

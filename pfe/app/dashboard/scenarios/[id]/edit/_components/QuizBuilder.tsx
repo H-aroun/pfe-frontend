@@ -86,7 +86,14 @@ export function QuizBuilder({ activityId }: Props) {
     updateDraft(current => ({
       ...current,
       questions: current.questions.map((q, idx) =>
-        idx === qi ? { ...q, options: q.options.map((o, j) => j === oi ? val : o) } : q
+        idx === qi ? {
+          ...q,
+          options: q.options.map((o, j) => j === oi ? val : o),
+          correctAnswer:
+            q.correctAnswer === q.options[oi] && q.correctAnswer !== ''
+              ? val
+              : q.correctAnswer,
+        } : q
       ),
     }))
 

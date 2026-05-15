@@ -10,18 +10,14 @@ import {
   AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, BarChart, Bar, Cell,
 } from 'recharts'
 import { analyticsApi, scenariosApi } from '@/lib/api'
+import { useAuth } from '@/context/AuthContext'
 import { Card, CardBody, CardHeader } from '@/components/ui/Card'
 import { StatusBadge } from '@/components/ui/Badge'
 import { Spinner } from '@/components/ui/Spinner'
 import { Button } from '@/components/ui/Button'
 import { formatDate } from '@/lib/utils'
+import { normalizeAnalyticsDashboard } from '@/lib/analytics'
 import type { Scenario, AnalyticsDashboard } from '@/types'
-
-const mockActivity = [
-  { date: 'Mon', count: 12 }, { date: 'Tue', count: 18 }, { date: 'Wed', count: 9 },
-  { date: 'Thu', count: 24 }, { date: 'Fri', count: 31 }, { date: 'Sat', count: 15 },
-  { date: 'Sun', count: 22 },
-]
 
 interface StatCardProps {
   icon: React.ElementType
@@ -48,17 +44,21 @@ function StatCard({ icon: Icon, label, value, sub, color, iconBg }: StatCardProp
 }
 
 const customTooltipStyle = {
-  backgroundColor: '#182420',
-  border: '1px solid rgba(246,240,230,0.12)',
+  backgroundColor: 'var(--lux-surface)',
+  border: '1px solid var(--lux-line)',
   borderRadius: '0.75rem',
-  color: '#F6F0E6',
+  color: 'var(--lux-text)',
   fontSize: 12,
 }
 
 export default function DashboardPage() {
+  const { isAdmin } = useAuth()
+
   const { data: analyticsData, isLoading: loadingAnalytics } = useQuery({
-    queryKey: ['analytics-dashboard'],
-    queryFn: () => analyticsApi.getDashboard().then((r) => r.data as AnalyticsDashboard),
+    queryKey: ['analytics-dashboard', isAdmin ? 'admin' : 'me'],
+    queryFn: () =>
+      (isAdmin ? analyticsApi.getDashboard() : analyticsApi.getMyStats())
+        .then((r) => normalizeAnalyticsDashboard(r.data)),
   })
 
   const { data: scenariosData, isLoading: loadingScenarios } = useQuery({
@@ -66,7 +66,8 @@ export default function DashboardPage() {
     queryFn: () => scenariosApi.getAll({ limit: 5 }).then((r) => r.data as Scenario[]),
   })
 
-  const stats = analyticsData ?? {}
+  const stats = analyticsData ?? normalizeAnalyticsDashboard(null)
+  const activityData = stats.recentActivity ?? []
 
   return (
     <div className="space-y-6">
@@ -130,20 +131,26 @@ export default function DashboardPage() {
             <BarChart2 size={15} className="text-slate-500" />
           </CardHeader>
           <CardBody>
-            <ResponsiveContainer width="100%" height={200}>
-              <AreaChart data={mockActivity}>
-                <defs>
-                  <linearGradient id="actGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#0F6B4A" stopOpacity={0.28} />
-                    <stop offset="95%" stopColor="#0F6B4A" stopOpacity={0} />
-                  </linearGradient>
-                </defs>
-                <XAxis dataKey="date" tick={{ fill: '#475569', fontSize: 11 }} axisLine={false} tickLine={false} />
-                <YAxis tick={{ fill: '#475569', fontSize: 11 }} axisLine={false} tickLine={false} width={28} />
-                <Tooltip contentStyle={customTooltipStyle} cursor={{ stroke: 'rgba(15,107,74,0.34)', strokeWidth: 1 }} />
-                <Area type="monotone" dataKey="count" stroke="#0F6B4A" fill="url(#actGrad)" strokeWidth={2} dot={false} />
-              </AreaChart>
-            </ResponsiveContainer>
+            {activityData.length ? (
+              <ResponsiveContainer width="100%" height={200}>
+                <AreaChart data={activityData}>
+                  <defs>
+                    <linearGradient id="actGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="var(--lux-primary)" stopOpacity={0.28} />
+                      <stop offset="95%" stopColor="var(--lux-primary)" stopOpacity={0} />
+                    </linearGradient>
+                  </defs>
+                  <XAxis dataKey="date" tick={{ fill: 'var(--lux-muted-soft)', fontSize: 11 }} axisLine={false} tickLine={false} />
+                  <YAxis tick={{ fill: 'var(--lux-muted-soft)', fontSize: 11 }} axisLine={false} tickLine={false} width={28} />
+                  <Tooltip contentStyle={customTooltipStyle} cursor={{ stroke: 'var(--lux-primary)', strokeWidth: 1 }} />
+                  <Area type="monotone" dataKey="count" stroke="var(--lux-primary)" fill="url(#actGrad)" strokeWidth={2} dot={false} />
+                </AreaChart>
+              </ResponsiveContainer>
+            ) : (
+              <div className="flex h-[200px] items-center justify-center text-xs text-slate-600">
+                No activity data yet
+              </div>
+            )}
           </CardBody>
         </Card>
 
@@ -155,16 +162,16 @@ export default function DashboardPage() {
             <ResponsiveContainer width="100%" height={200}>
               <BarChart
                 data={[
-                  { name: 'Draft', value: (stats as AnalyticsDashboard).draftScenarios ?? 0, fill: '#C6A765' },
-                  { name: 'Published', value: (stats as AnalyticsDashboard).publishedScenarios ?? 0, fill: '#0F6B4A' },
-                  { name: 'Archived', value: (stats as AnalyticsDashboard).archivedScenarios ?? 0, fill: '#8E9C93' },
+                  { name: 'Draft', value: (stats as AnalyticsDashboard).draftScenarios ?? 0, fill: 'var(--lux-gold)' },
+                  { name: 'Published', value: (stats as AnalyticsDashboard).publishedScenarios ?? 0, fill: 'var(--lux-primary)' },
+                  { name: 'Archived', value: (stats as AnalyticsDashboard).archivedScenarios ?? 0, fill: 'var(--lux-muted-soft)' },
                 ]}
               >
-                <XAxis dataKey="name" tick={{ fill: '#475569', fontSize: 11 }} axisLine={false} tickLine={false} />
-                <YAxis tick={{ fill: '#475569', fontSize: 11 }} axisLine={false} tickLine={false} width={20} />
+                <XAxis dataKey="name" tick={{ fill: 'var(--lux-muted-soft)', fontSize: 11 }} axisLine={false} tickLine={false} />
+                <YAxis tick={{ fill: 'var(--lux-muted-soft)', fontSize: 11 }} axisLine={false} tickLine={false} width={20} />
                 <Tooltip contentStyle={customTooltipStyle} />
                 <Bar dataKey="value" radius={[4, 4, 0, 0]}>
-                  {['#C6A765', '#0F6B4A', '#8E9C93'].map((fill, index) => (
+                  {['var(--lux-gold)', 'var(--lux-primary)', 'var(--lux-muted-soft)'].map((fill, index) => (
                     <Cell key={`cell-${index}`} fill={fill} />
                   ))}
                 </Bar>
@@ -194,8 +201,8 @@ export default function DashboardPage() {
                       <Film size={14} className="text-[#83BFA1]" />
                     </div>
                     <div className="min-w-0">
-                      <p className="text-sm font-medium text-slate-200 truncate">{s.title}</p>
-                      <p className="text-xs text-slate-500">{formatDate(s.createdAt)}</p>
+                      <p className="text-sm font-medium text-slate-200 truncate">{s.titre ?? s.title}</p>
+                      <p className="text-xs text-slate-500">{formatDate(s.dateCreation ?? s.createdAt)}</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3 flex-shrink-0 ml-4">

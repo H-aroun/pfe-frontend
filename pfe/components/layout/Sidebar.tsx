@@ -36,8 +36,8 @@ function NavLink({ href, label, icon: Icon, active }: NavLinkProps) {
       className={cn(
         'flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-150',
         active
-          ? 'bg-[#0F6B4A] text-[#FFF8EC] shadow-[0_12px_28px_rgba(5,12,14,0.24)]'
-          : 'text-[#B9AD9C] hover:text-[#F6F0E6] hover:bg-[rgba(246,240,230,0.06)]'
+          ? 'bg-[var(--lux-primary)] text-[var(--lux-text-strong)] shadow-[0_12px_28px_rgba(5,12,14,0.24)]'
+          : 'text-[var(--lux-muted)] hover:text-[var(--lux-text)] hover:bg-[var(--lux-primary-soft)]'
       )}
     >
       <Icon size={17} className="flex-shrink-0" />
@@ -55,13 +55,13 @@ export function Sidebar() {
     exact ? pathname === href : pathname.startsWith(href)
 
   return (
-    <aside className="w-60 flex-shrink-0 flex flex-col bg-[#111A1F] border-r border-[rgba(246,240,230,0.12)] h-full overflow-y-auto">
+    <aside className="w-60 flex-shrink-0 flex flex-col bg-[var(--lux-bg)] border-r border-[var(--lux-line)] h-full overflow-y-auto">
       {/* Logo */}
-      <div className="flex items-center gap-2.5 px-5 py-5 border-b border-[rgba(246,240,230,0.12)]">
-        <div className="h-8 w-8 rounded-lg bg-[#0F6B4A] flex items-center justify-center flex-shrink-0">
-          <BookOpen size={15} className="text-[#FFF8EC]" />
+      <div className="flex items-center gap-2.5 px-5 py-5 border-b border-[var(--lux-line)]">
+        <div className="h-8 w-8 rounded-lg bg-[var(--lux-primary)] flex items-center justify-center flex-shrink-0">
+          <BookOpen size={15} className="text-[var(--lux-text-strong)]" />
         </div>
-        <span className="font-bold text-[#F6F0E6] text-base">EduScenario</span>
+        <span className="font-bold text-[var(--lux-text)] text-base">EduScenario</span>
       </div>
 
       {/* Nav */}
@@ -76,8 +76,8 @@ export function Sidebar() {
 
         {isAdmin && (
           <>
-            <div className="border-t border-[rgba(246,240,230,0.10)] my-3" />
-            <p className="text-[10px] uppercase text-[#C6A765] font-semibold px-3 mb-1">Admin</p>
+            <div className="border-t border-[var(--lux-line)] my-3" />
+            <p className="text-[10px] uppercase text-[var(--lux-gold)] font-semibold px-3 mb-1">Admin</p>
             {adminItems.map((item) => (
               <NavLink
                 key={item.href}
@@ -88,7 +88,7 @@ export function Sidebar() {
           </>
         )}
 
-        <div className="border-t border-[rgba(246,240,230,0.10)] my-3" />
+        <div className="border-t border-[var(--lux-line)] my-3" />
         <NavLink
           href="/dashboard/settings"
           label="Settings"
@@ -98,20 +98,20 @@ export function Sidebar() {
       </nav>
 
       {/* User profile */}
-      <div className="px-3 pb-4 border-t border-[rgba(246,240,230,0.12)] pt-3">
+      <div className="px-3 pb-4 border-t border-[var(--lux-line)] pt-3">
         <div className="flex items-center gap-3 px-2 py-2 rounded-xl">
           <Avatar firstName={user?.firstName} lastName={user?.lastName} size="sm" />
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-[#F6F0E6] truncate">
+            <p className="text-sm font-medium text-[var(--lux-text)] truncate">
               {user?.firstName} {user?.lastName}
             </p>
-            <p className="text-xs text-[#8E9C93] truncate capitalize">
+            <p className="text-xs text-[var(--lux-muted-soft)] truncate capitalize">
               {user?.role?.toLowerCase()}
             </p>
           </div>
           <button
             onClick={logout}
-            className="p-1.5 rounded-lg text-[#8E9C93] hover:text-red-400 hover:bg-red-500/10 transition-colors"
+            className="p-1.5 rounded-lg text-[var(--lux-muted-soft)] hover:text-red-400 hover:bg-red-500/10 transition-colors"
             title="Sign out"
           >
             <LogOut size={15} />
