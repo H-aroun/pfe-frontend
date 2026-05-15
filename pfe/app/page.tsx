@@ -108,7 +108,7 @@ function ProductPreview({ theme }: { theme: Theme }) {
           <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: theme.primary }} />
         </div>
         <div
-          className="hidden h-7 min-w-[260px] items-center justify-center rounded-full border px-5 text-[11px] sm:flex"
+          className="hidden h-7 min-w-65 items-center justify-center rounded-full border px-5 text-[11px] sm:flex"
           style={{ borderColor: theme.line, backgroundColor: theme.pageAlt, color: theme.muted }}
         >
           eduscenario.app/dashboard/scenarios
@@ -116,7 +116,7 @@ function ProductPreview({ theme }: { theme: Theme }) {
         <div className="h-2 w-14 rounded-full" style={{ backgroundColor: theme.line }} />
       </div>
 
-      <div className="grid min-h-[360px] grid-cols-1 md:grid-cols-[240px_1fr]">
+      <div className="grid min-h-90 grid-cols-1 md:grid-cols-[240px_1fr]">
         <aside className="border-b p-6 md:border-b-0 md:border-r" style={{ borderColor: theme.line }}>
           <div className="mb-8 flex items-center gap-3">
             <div

@@ -25,7 +25,8 @@ type ProfileForm = z.infer<typeof profileSchema>
 
 export default function SettingsPage() {
   const { user } = useAuth()
-  const [tab, setTab] = useState<'profile' | 'security'>('profile')
+  const [tab, setTab] = useState<'profile' | 'security'>('security')
+console.log("user ", user);
 
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<ProfileForm>({
     resolver: zodResolver(profileSchema),
@@ -62,11 +63,11 @@ export default function SettingsPage() {
           </CardHeader>
           <CardBody>
             <div className="flex items-center gap-4 mb-6">
-              <Avatar firstName={user?.firstName} lastName={user?.lastName} size="xl" />
+              <Avatar firstName={user?.name} size="xl" />
               <div>
-                <p className="font-semibold text-slate-100">{user?.firstName} {user?.lastName}</p>
+                <p className="font-semibold text-slate-100">{user?.name}</p>
                 <p className="text-sm text-slate-500">{user?.email}</p>
-                <div className="mt-1">{user?.role && <StatusBadge status={user.role} />}</div>
+                <div className="mt-1">{user?.role?.name && <StatusBadge status={user.role?.name} />}</div>
               </div>
             </div>
             <form onSubmit={handleSubmit(d => updateProfile(d))} className="space-y-4">

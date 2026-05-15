@@ -9,10 +9,11 @@ import { z } from 'zod'
 import { toast } from 'react-hot-toast'
 import { Mail, Lock, Eye, EyeOff, BookOpen } from 'lucide-react'
 //import { useAuth } from '@/context/AuthContext'
+import { ThemeToggle } from '@/components/theme/ThemeToggle'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 import { login } from '@/action/login'
-import { ThemeToggle } from '@/components/theme/ThemeToggle'
+import { setAuth } from '@/lib/auth'
 
 
 const schema = z.object({
@@ -35,14 +36,14 @@ export default function LoginPage() {
   const onSubmit = async (data: FormData) => {
     
     try {
-      
-      await login(data.email, data.password)
-      
-     
+      const res = await login(data.email, data.password)
+      console.log(res);
+      if(res){
+        setAuth(res.access_token, res.userInfo)
+      }
       toast.success('Logged in')
-      router.push('/dashboard')}
-      
-    catch {
+      router.push('/dashboard')
+    } catch {
       toast.error('Incorrect email or password.')
     }
   }

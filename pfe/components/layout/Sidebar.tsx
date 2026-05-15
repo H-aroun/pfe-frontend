@@ -50,6 +50,8 @@ function NavLink({ href, label, icon: Icon, active }: NavLinkProps) {
 export function Sidebar() {
   const pathname = usePathname()
   const { user, isAdmin, logout } = useAuth()
+  console.log(user);
+  
 
   const isActive = (href: string, exact?: boolean) =>
     exact ? pathname === href : pathname.startsWith(href)
@@ -100,13 +102,13 @@ export function Sidebar() {
       {/* User profile */}
       <div className="px-3 pb-4 border-t border-[var(--lux-line)] pt-3">
         <div className="flex items-center gap-3 px-2 py-2 rounded-xl">
-          <Avatar firstName={user?.firstName} lastName={user?.lastName} size="sm" />
+          <Avatar firstName={user?.firstName} size="sm" />
           <div className="flex-1 min-w-0">
             <p className="text-sm font-medium text-[var(--lux-text)] truncate">
-              {user?.firstName} {user?.lastName}
+              {user?.name}
             </p>
             <p className="text-xs text-[var(--lux-muted-soft)] truncate capitalize">
-              {user?.role?.toLowerCase()}
+              {user?.role?.name?.toLowerCase()}
             </p>
           </div>
           <button

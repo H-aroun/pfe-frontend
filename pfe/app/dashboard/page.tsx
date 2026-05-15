@@ -53,7 +53,7 @@ const customTooltipStyle = {
 
 export default function DashboardPage() {
   const { isAdmin } = useAuth()
-
+  
   const { data: analyticsData, isLoading: loadingAnalytics } = useQuery({
     queryKey: ['analytics-dashboard', isAdmin ? 'admin' : 'me'],
     queryFn: () =>

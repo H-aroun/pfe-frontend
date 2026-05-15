@@ -13,7 +13,7 @@ import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 import { cn } from '@/lib/utils'
 import { ThemeToggle } from '@/components/theme/ThemeToggle'
-
+import {signUp} from "@/action/register"
 const schema = z.object({
   firstName: z.string().min(2, 'Please enter your first name'),
   lastName: z.string().min(2, 'Please enter your last name'),
@@ -51,11 +51,14 @@ export default function RegisterPage() {
 
   const onSubmit = async (data: FormData) => {
     try {
-      await registerUser(data)
-      toast.success('Account created')
-      router.push('/dashboard')
+      // await registerUser(data)
+      const res = await signUp({...data, dateInscription: new Date(), roleId: 2})
+      if(res){
+        toast.success('Account created')
+        router.push('/auth/login')
+      }
     } catch {
-      toast.error('Registration failed. This email may already be in use.')
+      toast.error('Registration failed.')
     }
   }
 
