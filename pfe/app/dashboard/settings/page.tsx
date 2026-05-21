@@ -63,9 +63,9 @@ console.log("user ", user);
           </CardHeader>
           <CardBody>
             <div className="flex items-center gap-4 mb-6">
-              <Avatar firstName={user?.name} size="xl" />
+              <Avatar firstName={user?.firstName} lastName={user?.lastName} size="xl" />
               <div>
-                <p className="font-semibold text-slate-100">{user?.name}</p>
+                <p className="font-semibold text-slate-100">{user?.lastName} {user?.firstName}</p>
                 <p className="text-sm text-slate-500">{user?.email}</p>
                 <div className="mt-1">{user?.role?.name && <StatusBadge status={user.role?.name} />}</div>
               </div>

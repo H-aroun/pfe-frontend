@@ -49,7 +49,7 @@ export function Topbar() {
 
         {/* Avatar */}
         <div className="h-8 w-8 rounded-lg overflow-hidden">
-          <Avatar firstName={user?.name} size="sm" />
+          <Avatar firstName={user?.firstName} lastName={user?.lastName} size="sm" />
         </div>
       </div>
     </header>

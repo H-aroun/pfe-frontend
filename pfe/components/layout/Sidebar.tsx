@@ -102,10 +102,10 @@ export function Sidebar() {
       {/* User profile */}
       <div className="px-3 pb-4 border-t border-[var(--lux-line)] pt-3">
         <div className="flex items-center gap-3 px-2 py-2 rounded-xl">
-          <Avatar firstName={user?.firstName} size="sm" />
+          <Avatar firstName={user?.firstName} lastName={user?.lastName} size="sm" />
           <div className="flex-1 min-w-0">
             <p className="text-sm font-medium text-[var(--lux-text)] truncate">
-              {user?.name}
+              {user?.firstName} {user?.lastName}
             </p>
             <p className="text-xs text-[var(--lux-muted-soft)] truncate capitalize">
               {user?.role?.name?.toLowerCase()}
