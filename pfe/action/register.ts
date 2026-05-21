@@ -9,30 +9,28 @@ interface User {
 }
 
 
-export async function signUp(data: User) {
-    try {
-        
-        console.log("dataaaa ==> ", data);
-        
-  const response = await fetch(`${BASE_URL}/users`, {
-    method: 'POST',
-    headers: {
+export const signUp = async (data: any) => {
+  try {
+    console.log("dataaaa ==> ", data);
+
+    const response = await fetch('http://localhost:3001/users', {
+      method: 'POST',
+      headers: {
         'Content-Type': 'application/json',
-    },
-    credentials: 'include',
-    body: JSON.stringify(data),
-})
+      },
+      body: JSON.stringify(data),
+    });
 
-if (!response.ok) {
-    throw new Error('Login failed')
-}
+    const result = await response.json();
 
-const result = (await response.json()) as User
-console.log(result);
+    if (!response.ok) {
+      throw new Error(result.message || 'Registration failed');
+    }
 
-return result
-} catch (error) {
-    console.error(error);
-    
-}
-}
+    return result;
+
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};

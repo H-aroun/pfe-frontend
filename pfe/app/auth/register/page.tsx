@@ -27,7 +27,6 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>
 
 export default function RegisterPage() {
-  const { register: registerUser } = useAuth()
   const router = useRouter()
   const [showPass, setShowPass] = useState(false)
 
@@ -53,12 +52,20 @@ export default function RegisterPage() {
     try {
       // await registerUser(data)
       const res = await signUp({...data, dateInscription: new Date(), role: {id: 2}})
+      console.log("reees ===> ", res);
+      
       if(res){
         toast.success('Account created')
         router.push('/auth/login')
       }
-    } catch {
-      toast.error('Registration failed.')
+    } catch (error: any) {
+      console.log("ERROR ===>", error);
+
+      toast.error(
+        error?.response?.data?.message || 
+        error?.message || 
+        'Registration failed.'
+      )
     }
   }
 
