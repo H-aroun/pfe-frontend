@@ -52,3 +52,16 @@ export function downloadBlob(blob: Blob, filename: string) {
   a.click()
   URL.revokeObjectURL(url)
 }
+
+
+export function getCookie(name: string){
+  const nameEQ = name + "=";
+  const ca = document.cookie.split(';');
+  for(let i = 0; i< ca.length; i++){
+    const c = ca[i].trim();
+    if(c.indexOf(nameEQ) === 0){
+      return decodeURIComponent(c.substring(nameEQ.length,c.length));
+    }
+  }
+  return null
+}

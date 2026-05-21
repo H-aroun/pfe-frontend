@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 
 import { useState } from 'react'
@@ -14,23 +15,34 @@ import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 import { Avatar } from '@/components/ui/Avatar'
 import { StatusBadge } from '@/components/ui/Badge'
-
+import { ChangePassword } from '@/action/changePassword'
 const profileSchema = z.object({
   firstName: z.string().min(2),
   lastName: z.string().min(2),
   email: z.string().email(),
 })
 
+const changeSchema = z.object({
+  currentPassword: z.string().min(6, 'Current Password must be at least 6 characters'),
+  newPassword: z.string().min(6, 'New Password must be at least 6 characters'),
+  confirmPassword: z.string().min(6, 'Confirm Password must be at least 6 characters'),
+})
+
 type ProfileForm = z.infer<typeof profileSchema>
 
+type ChangePassForm = z.infer<typeof changeSchema>
+
 export default function SettingsPage() {
-  const { user } = useAuth()
+  const { user, logout } = useAuth()
   const [tab, setTab] = useState<'profile' | 'security'>('security')
-console.log("user ", user);
 
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<ProfileForm>({
     resolver: zodResolver(profileSchema),
     defaultValues: { firstName: user?.firstName ?? '', lastName: user?.lastName ?? '', email: user?.email ?? '' },
+  })
+
+  const { register : registerChange, handleSubmit: handleSubmitChange, formState: { errors: errorsChange, isSubmitting: isSubmittingChange } } = useForm<ChangePassForm>({
+    resolver: zodResolver(changeSchema),
   })
 
   const { mutate: updateProfile } = useMutation({
@@ -39,6 +51,22 @@ console.log("user ", user);
     onError: () => toast.error('Update failed'),
   })
 
+
+const changePassword = async (data: ChangePassForm) => {
+  try {
+    const res = await ChangePassword(data);
+
+    toast.success(res.message);
+
+  } catch (error: any) {
+
+    toast.error(
+      error.message || "Change Password Failed!"
+    );
+
+    console.log(error);
+  }
+};
   return (
     <div className="space-y-5 max-w-xl">
       <div>
@@ -91,12 +119,14 @@ console.log("user ", user);
           </CardHeader>
           <CardBody>
             <div className="space-y-4">
-              <Input id="cur-pass" label="Current password" type="password" placeholder="••••••••" />
-              <Input id="new-pass" label="New password" type="password" placeholder="Min. 8 characters" />
-              <Input id="conf-pass" label="Confirm new password" type="password" placeholder="••••••••" />
-              <Button size="sm" onClick={() => toast('Password change coming soon', { icon: '🔒' })}>
-                <Save size={13} className="mr-1" /> Update password
-              </Button>
+              <form onSubmit={handleSubmitChange(d => changePassword(d))} className="space-y-4">
+                <Input id="cur-pass" label="Current password" error={errorsChange?.currentPassword?.message} {...registerChange('currentPassword')} type="password" placeholder="••••••••" />
+                <Input id="new-pass" label="New password" error={errorsChange?.newPassword?.message} {...registerChange('newPassword')} type="password" placeholder="Min. 8 characters" />
+                <Input id="conf-pass" label="Confirm new password" error={errorsChange?.confirmPassword?.message} {...registerChange('confirmPassword')} type="password" placeholder="••••••••" />
+                <Button type='submit' size="sm" loading={isSubmittingChange}>
+                  <Save size={13} className="mr-1" /> Update password
+                </Button>
+              </form>
             </div>
           </CardBody>
         </Card>
