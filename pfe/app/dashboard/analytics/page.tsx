@@ -164,7 +164,7 @@ export default function AnalyticsPage() {
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b border-white/6">
-                      {['Scenario', 'Status', 'Completions', 'Avg Score', ''].map((h, i) => (
+                      {['Scenario', 'Status', 'Attempts', 'Completion', 'Success', 'Avg Score', ''].map((h, i) => (
                         <th key={i} className="text-left text-xs font-medium text-slate-500 pb-3 pr-4">{h}</th>
                       ))}
                     </tr>
@@ -179,7 +179,9 @@ export default function AnalyticsPage() {
                           </div>
                         </td>
                         <td className="py-3 pr-4"><StatusBadge status={s.status} /></td>
-                        <td className="py-3 pr-4 text-slate-300">{s.completions}</td>
+                        <td className="py-3 pr-4 text-slate-300">{s.attempts ?? s.completions}</td>
+                        <td className="py-3 pr-4 text-slate-300">{s.completionRate ?? 0}%</td>
+                        <td className="py-3 pr-4 text-slate-300">{s.successRate ?? 0}%</td>
                         <td className="py-3 pr-4">
                           <span className={s.avgScore >= 70 ? 'text-green-400' : 'text-amber-400'}>{s.avgScore}%</span>
                         </td>
@@ -189,7 +191,7 @@ export default function AnalyticsPage() {
                       </tr>
                     ))}
                     {!stats.topScenarios?.length && (
-                      <tr><td colSpan={5} className="py-8 text-center text-slate-600 text-xs">No data yet</td></tr>
+                      <tr><td colSpan={7} className="py-8 text-center text-slate-600 text-xs">No data yet</td></tr>
                     )}
                   </tbody>
                 </table>
@@ -204,6 +206,9 @@ export default function AnalyticsPage() {
           <div className="grid grid-cols-2 gap-3">
             {[
               { label: 'Completions', value: drillDown.completions },
+              { label: 'Attempts', value: drillDown.attempts ?? drillDown.completions },
+              { label: 'Completion', value: `${drillDown.completionRate ?? 0}%` },
+              { label: 'Success', value: `${drillDown.successRate ?? 0}%` },
               { label: 'Avg Score', value: `${drillDown.avgScore}%` },
               { label: 'Avg Time', value: drillDown.avgTime ? `${drillDown.avgTime}m` : '-' },
               { label: 'Status', value: <StatusBadge status={drillDown.status} /> },

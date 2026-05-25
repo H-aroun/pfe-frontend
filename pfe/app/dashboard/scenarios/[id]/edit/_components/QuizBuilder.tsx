@@ -8,9 +8,11 @@ import { quizApi } from '@/lib/api'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 import { Spinner } from '@/components/ui/Spinner'
+import { useSocket } from '@/context/SocketContext'
 import type { Quiz, Question, QuestionType } from '@/types'
 
 interface Props {
+  scenarioId: string
   activityId: string
 }
 
@@ -42,8 +44,9 @@ const createQuizDraft = (quiz?: Quiz | null): QuizDraft => ({
   timeLimit: quiz?.timeLimit ? String(quiz.timeLimit) : '',
 })
 
-export function QuizBuilder({ activityId }: Props) {
+export function QuizBuilder({ scenarioId, activityId }: Props) {
   const qc = useQueryClient()
+  const { broadcastScenarioEdit } = useSocket()
   const [draftOverride, setDraftOverride] = useState<QuizDraft | null>(null)
 
   // TanStack Query v5 — no onSuccess in useQuery, use useEffect instead
@@ -72,6 +75,12 @@ export function QuizBuilder({ activityId }: Props) {
     onSuccess: () => {
       toast.success('Quiz saved!')
       qc.invalidateQueries({ queryKey: ['quiz', activityId] })
+      broadcastScenarioEdit({
+        scenarioId,
+        entityType: 'quiz',
+        entityId: activityId,
+        action: existing ? 'update' : 'create',
+      })
     },
     onError: () => toast.error('Failed to save quiz'),
   })

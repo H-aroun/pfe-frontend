@@ -93,13 +93,13 @@ export default function DashboardPage() {
             icon={Film}
             label="Total Scenarios"
             value={(stats as AnalyticsDashboard).totalScenarios ?? '—'}
-            sub={`${(stats as AnalyticsDashboard).publishedScenarios ?? 0} published`}
+            sub={`${(stats as AnalyticsDashboard).publishedScenarios ?? 0} ready`}
             color="text-[#83BFA1]"
             iconBg="bg-[#0F6B4A]/18"
           />
           <StatCard
             icon={CheckCircle}
-            label="Published"
+            label="Ready"
             value={(stats as AnalyticsDashboard).publishedScenarios ?? '—'}
             sub={`${(stats as AnalyticsDashboard).draftScenarios ?? 0} drafts`}
             color="text-[#83BFA1]"
@@ -163,7 +163,7 @@ export default function DashboardPage() {
               <BarChart
                 data={[
                   { name: 'Draft', value: (stats as AnalyticsDashboard).draftScenarios ?? 0, fill: 'var(--lux-gold)' },
-                  { name: 'Published', value: (stats as AnalyticsDashboard).publishedScenarios ?? 0, fill: 'var(--lux-primary)' },
+                  { name: 'Ready', value: (stats as AnalyticsDashboard).publishedScenarios ?? 0, fill: 'var(--lux-primary)' },
                   { name: 'Archived', value: (stats as AnalyticsDashboard).archivedScenarios ?? 0, fill: 'var(--lux-muted-soft)' },
                 ]}
               >

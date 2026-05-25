@@ -4,11 +4,20 @@ import {
   createContext,
   useContext,
   useCallback,
+  useEffect,
   useSyncExternalStore,
   type ReactNode,
 } from 'react'
-import { authApi } from '@/lib/api'
-import { AUTH_CHANGED_EVENT, setAuth, clearAuth, getStoredUser, getToken, normalizeUser } from '@/lib/auth'
+import { authApi, getApiErrorMessage } from '@/lib/api'
+import {
+  AUTH_CHANGED_EVENT,
+  setAuth,
+  clearAuth,
+  getStoredUser,
+  getToken,
+  normalizeUser,
+  setStoredUser,
+} from '@/lib/auth'
 import type { User } from '@/types'
 
 interface AuthContextValue {
@@ -18,6 +27,7 @@ interface AuthContextValue {
   isAdmin: boolean
   login: (email: string, password: string) => Promise<void>
   register: (data: RegisterData) => Promise<void>
+  refreshUser: () => Promise<void>
   logout: () => void
 }
 
@@ -88,39 +98,71 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     () => serverAuthSnapshot
   )
 
-  const login = useCallback(async (email: string, password: string) => {
-    const { data } = await authApi.login({ email, password })
+  const refreshUser = useCallback(async () => {
+    const storedToken = getToken()
+    if (!storedToken) return
 
-    // Normalise — backend uses access_token + userInfo; future-proof for accessToken + user
-    const rawUser = data.userInfo ?? data.user
-    const jwt: string = data.access_token ?? data.accessToken
-
-    if (!rawUser || !jwt) {
-      throw new Error('Invalid response from server: missing user or token')
+    try {
+      const { data } = await authApi.me()
+      setStoredUser(data)
+    } catch {
+      // The axios interceptor clears auth on real 401 responses.
+      // Keep the local session for transient refresh failures.
     }
+  }, [])
 
-    const normUser = normalizeUser(rawUser)
-    setAuth(jwt, normUser)
+  useEffect(() => {
+    if (token) {
+      void refreshUser()
+    }
+  }, [token, refreshUser])
+
+  const login = useCallback(async (email: string, password: string) => {
+    try {
+      const { data } = await authApi.login({ email, password })
+
+      // Normalize backend auth payloads that may return either userInfo/access_token or user/accessToken.
+      const rawUser = data.userInfo ?? data.user
+      const jwt: string = data.access_token ?? data.accessToken
+
+      if (!rawUser || !jwt) {
+        throw new Error('Unable to log in. Please try again.')
+      }
+
+      const normUser = normalizeUser(rawUser)
+      setAuth(jwt, normUser)
+    } catch (error: unknown) {
+      throw new Error(
+        getApiErrorMessage(error, 'Unable to log in. Please try again.'),
+      )
+    }
   }, [])
 
   const register = useCallback(async (formData: RegisterData) => {
-    const response = await authApi.register({
-      name: `${formData.firstName.trim()} ${formData.lastName.trim()}`,
-      email: formData.email,
-      password: formData.password,
-    })
+    try {
+      const response = await authApi.register({
+        firstName: formData.firstName.trim(),
+        lastName: formData.lastName.trim(),
+        email: formData.email,
+        password: formData.password,
+      })
 
-    const data = response.data ?? {}
-    const rawUser = data.userInfo ?? data.user
-    const jwt: string = data.access_token ?? data.accessToken ?? ''
+      const data = response.data ?? {}
+      const rawUser = data.userInfo ?? data.user
+      const jwt: string = data.access_token ?? data.accessToken ?? ''
 
-    if (rawUser && jwt) {
-      const normUser = normalizeUser(rawUser)
-      setAuth(jwt, normUser)
-      return
+      if (rawUser && jwt) {
+        const normUser = normalizeUser(rawUser)
+        setAuth(jwt, normUser)
+        return
+      }
+
+      await login(formData.email, formData.password)
+    } catch (error: unknown) {
+      throw new Error(
+        getApiErrorMessage(error, 'Unable to create your account. Please try again.'),
+      )
     }
-
-    await login(formData.email, formData.password)
   }, [login])
 
   const logout = useCallback(() => {
@@ -137,6 +179,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         isAdmin: user?.role === 'ADMIN',
         login,
         register,
+        refreshUser,
         logout,
       }}
     >

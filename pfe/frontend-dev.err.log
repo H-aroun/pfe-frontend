@@ -1,0 +1,958 @@
+Error: Can't resolve 'tailwindcss' in 'C:\Users\harou\full\pfe-frontend'
+    [2m[at finishWithoutResolve (C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:16:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m {
+  details: "resolve 'tailwindcss' in 'C:\\Users\\harou\\full\\pfe-frontend'\n" +
+    '  Parsed request is a module\n' +
+    '  No description file found in C:\\Users\\harou\\full\\pfe-frontend or above\n' +
+    '  resolve as module\n' +
+    "    C:\\Users\\harou\\full\\pfe-frontend\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\full\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tailwindcss' in 'C:\Users\harou\full\pfe-frontend'
+    [2m[at finishWithoutResolve (C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:16:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m {
+  details: "resolve 'tailwindcss' in 'C:\\Users\\harou\\full\\pfe-frontend'\n" +
+    '  Parsed request is a module\n' +
+    '  No description file found in C:\\Users\\harou\\full\\pfe-frontend or above\n' +
+    '  resolve as module\n' +
+    "    C:\\Users\\harou\\full\\pfe-frontend\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\full\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tailwindcss' in 'C:\Users\harou\full\pfe-frontend'
+    [2m[at finishWithoutResolve (C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:16:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m {
+  details: "resolve 'tailwindcss' in 'C:\\Users\\harou\\full\\pfe-frontend'\n" +
+    '  Parsed request is a module\n' +
+    '  No description file found in C:\\Users\\harou\\full\\pfe-frontend or above\n' +
+    '  resolve as module\n' +
+    "    C:\\Users\\harou\\full\\pfe-frontend\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\full\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tailwindcss' in 'C:\Users\harou\full\pfe-frontend'
+    [2m[at finishWithoutResolve (C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:16:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m {
+  details: "resolve 'tailwindcss' in 'C:\\Users\\harou\\full\\pfe-frontend'\n" +
+    '  Parsed request is a module\n' +
+    '  No description file found in C:\\Users\\harou\\full\\pfe-frontend or above\n' +
+    '  resolve as module\n' +
+    "    C:\\Users\\harou\\full\\pfe-frontend\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\full\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tailwindcss' in 'C:\Users\harou\full\pfe-frontend'
+    [2m[at finishWithoutResolve (C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:16:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m {
+  details: "resolve 'tailwindcss' in 'C:\\Users\\harou\\full\\pfe-frontend'\n" +
+    '  Parsed request is a module\n' +
+    '  No description file found in C:\\Users\\harou\\full\\pfe-frontend or above\n' +
+    '  resolve as module\n' +
+    "    C:\\Users\\harou\\full\\pfe-frontend\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\full\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tailwindcss' in 'C:\Users\harou\full\pfe-frontend'
+    [2m[at finishWithoutResolve (C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:16:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m {
+  details: "resolve 'tailwindcss' in 'C:\\Users\\harou\\full\\pfe-frontend'\n" +
+    '  Parsed request is a module\n' +
+    '  No description file found in C:\\Users\\harou\\full\\pfe-frontend or above\n' +
+    '  resolve as module\n' +
+    "    C:\\Users\\harou\\full\\pfe-frontend\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\full\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tailwindcss' in 'C:\Users\harou\full\pfe-frontend'
+    [2m[at finishWithoutResolve (C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:16:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m {
+  details: "resolve 'tailwindcss' in 'C:\\Users\\harou\\full\\pfe-frontend'\n" +
+    '  Parsed request is a module\n' +
+    '  No description file found in C:\\Users\\harou\\full\\pfe-frontend or above\n' +
+    '  resolve as module\n' +
+    "    C:\\Users\\harou\\full\\pfe-frontend\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\full\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tailwindcss' in 'C:\Users\harou\full\pfe-frontend'
+    [2m[at finishWithoutResolve (C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:16:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m {
+  details: "resolve 'tailwindcss' in 'C:\\Users\\harou\\full\\pfe-frontend'\n" +
+    '  Parsed request is a module\n' +
+    '  No description file found in C:\\Users\\harou\\full\\pfe-frontend or above\n' +
+    '  resolve as module\n' +
+    "    C:\\Users\\harou\\full\\pfe-frontend\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\full\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tailwindcss' in 'C:\Users\harou\full\pfe-frontend'
+    [2m[at finishWithoutResolve (C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:16:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m {
+  details: "resolve 'tailwindcss' in 'C:\\Users\\harou\\full\\pfe-frontend'\n" +
+    '  Parsed request is a module\n' +
+    '  No description file found in C:\\Users\\harou\\full\\pfe-frontend or above\n' +
+    '  resolve as module\n' +
+    "    C:\\Users\\harou\\full\\pfe-frontend\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\full\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tailwindcss' in 'C:\Users\harou\full\pfe-frontend'
+    [2m[at finishWithoutResolve (C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:16:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m {
+  details: "resolve 'tailwindcss' in 'C:\\Users\\harou\\full\\pfe-frontend'\n" +
+    '  Parsed request is a module\n' +
+    '  No description file found in C:\\Users\\harou\\full\\pfe-frontend or above\n' +
+    '  resolve as module\n' +
+    "    C:\\Users\\harou\\full\\pfe-frontend\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\full\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tailwindcss' in 'C:\Users\harou\full\pfe-frontend'
+    [2m[at finishWithoutResolve (C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:16:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m {
+  details: "resolve 'tailwindcss' in 'C:\\Users\\harou\\full\\pfe-frontend'\n" +
+    '  Parsed request is a module\n' +
+    '  No description file found in C:\\Users\\harou\\full\\pfe-frontend or above\n' +
+    '  resolve as module\n' +
+    "    C:\\Users\\harou\\full\\pfe-frontend\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\full\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tailwindcss' in 'C:\Users\harou\full\pfe-frontend'
+    [2m[at finishWithoutResolve (C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:16:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m {
+  details: "resolve 'tailwindcss' in 'C:\\Users\\harou\\full\\pfe-frontend'\n" +
+    '  Parsed request is a module\n' +
+    '  No description file found in C:\\Users\\harou\\full\\pfe-frontend or above\n' +
+    '  resolve as module\n' +
+    "    C:\\Users\\harou\\full\\pfe-frontend\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\full\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tailwindcss' in 'C:\Users\harou\full\pfe-frontend'
+    [2m[at finishWithoutResolve (C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:16:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m {
+  details: "resolve 'tailwindcss' in 'C:\\Users\\harou\\full\\pfe-frontend'\n" +
+    '  Parsed request is a module\n' +
+    '  No description file found in C:\\Users\\harou\\full\\pfe-frontend or above\n' +
+    '  resolve as module\n' +
+    "    C:\\Users\\harou\\full\\pfe-frontend\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\full\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tailwindcss' in 'C:\Users\harou\full\pfe-frontend'
+    [2m[at finishWithoutResolve (C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:16:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m {
+  details: "resolve 'tailwindcss' in 'C:\\Users\\harou\\full\\pfe-frontend'\n" +
+    '  Parsed request is a module\n' +
+    '  No description file found in C:\\Users\\harou\\full\\pfe-frontend or above\n' +
+    '  resolve as module\n' +
+    "    C:\\Users\\harou\\full\\pfe-frontend\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\full\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tailwindcss' in 'C:\Users\harou\full\pfe-frontend'
+    [2m[at finishWithoutResolve (C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:16:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m {
+  details: "resolve 'tailwindcss' in 'C:\\Users\\harou\\full\\pfe-frontend'\n" +
+    '  Parsed request is a module\n' +
+    '  No description file found in C:\\Users\\harou\\full\\pfe-frontend or above\n' +
+    '  resolve as module\n' +
+    "    C:\\Users\\harou\\full\\pfe-frontend\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\full\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tailwindcss' in 'C:\Users\harou\full\pfe-frontend'
+    [2m[at finishWithoutResolve (C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:16:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m {
+  details: "resolve 'tailwindcss' in 'C:\\Users\\harou\\full\\pfe-frontend'\n" +
+    '  Parsed request is a module\n' +
+    '  No description file found in C:\\Users\\harou\\full\\pfe-frontend or above\n' +
+    '  resolve as module\n' +
+    "    C:\\Users\\harou\\full\\pfe-frontend\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\full\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tailwindcss' in 'C:\Users\harou\full\pfe-frontend'
+    [2m[at finishWithoutResolve (C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:16:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m {
+  details: "resolve 'tailwindcss' in 'C:\\Users\\harou\\full\\pfe-frontend'\n" +
+    '  Parsed request is a module\n' +
+    '  No description file found in C:\\Users\\harou\\full\\pfe-frontend or above\n' +
+    '  resolve as module\n' +
+    "    C:\\Users\\harou\\full\\pfe-frontend\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\full\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tailwindcss' in 'C:\Users\harou\full\pfe-frontend'
+    [2m[at finishWithoutResolve (C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:16:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m {
+  details: "resolve 'tailwindcss' in 'C:\\Users\\harou\\full\\pfe-frontend'\n" +
+    '  Parsed request is a module\n' +
+    '  No description file found in C:\\Users\\harou\\full\\pfe-frontend or above\n' +
+    '  resolve as module\n' +
+    "    C:\\Users\\harou\\full\\pfe-frontend\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\full\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tailwindcss' in 'C:\Users\harou\full\pfe-frontend'
+    [2m[at finishWithoutResolve (C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:16:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m {
+  details: "resolve 'tailwindcss' in 'C:\\Users\\harou\\full\\pfe-frontend'\n" +
+    '  Parsed request is a module\n' +
+    '  No description file found in C:\\Users\\harou\\full\\pfe-frontend or above\n' +
+    '  resolve as module\n' +
+    "    C:\\Users\\harou\\full\\pfe-frontend\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\full\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tailwindcss' in 'C:\Users\harou\full\pfe-frontend'
+    [2m[at finishWithoutResolve (C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:16:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m {
+  details: "resolve 'tailwindcss' in 'C:\\Users\\harou\\full\\pfe-frontend'\n" +
+    '  Parsed request is a module\n' +
+    '  No description file found in C:\\Users\\harou\\full\\pfe-frontend or above\n' +
+    '  resolve as module\n' +
+    "    C:\\Users\\harou\\full\\pfe-frontend\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\full\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tailwindcss' in 'C:\Users\harou\full\pfe-frontend'
+    [2m[at finishWithoutResolve (C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:16:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m {
+  details: "resolve 'tailwindcss' in 'C:\\Users\\harou\\full\\pfe-frontend'\n" +
+    '  Parsed request is a module\n' +
+    '  No description file found in C:\\Users\\harou\\full\\pfe-frontend or above\n' +
+    '  resolve as module\n' +
+    "    C:\\Users\\harou\\full\\pfe-frontend\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\full\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tailwindcss' in 'C:\Users\harou\full\pfe-frontend'
+    [2m[at finishWithoutResolve (C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:16:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m {
+  details: "resolve 'tailwindcss' in 'C:\\Users\\harou\\full\\pfe-frontend'\n" +
+    '  Parsed request is a module\n' +
+    '  No description file found in C:\\Users\\harou\\full\\pfe-frontend or above\n' +
+    '  resolve as module\n' +
+    "    C:\\Users\\harou\\full\\pfe-frontend\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\full\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tailwindcss' in 'C:\Users\harou\full\pfe-frontend'
+    [2m[at finishWithoutResolve (C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:16:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m {
+  details: "resolve 'tailwindcss' in 'C:\\Users\\harou\\full\\pfe-frontend'\n" +
+    '  Parsed request is a module\n' +
+    '  No description file found in C:\\Users\\harou\\full\\pfe-frontend or above\n' +
+    '  resolve as module\n' +
+    "    C:\\Users\\harou\\full\\pfe-frontend\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\full\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tailwindcss' in 'C:\Users\harou\full\pfe-frontend'
+    [2m[at finishWithoutResolve (C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:16:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m {
+  details: "resolve 'tailwindcss' in 'C:\\Users\\harou\\full\\pfe-frontend'\n" +
+    '  Parsed request is a module\n' +
+    '  No description file found in C:\\Users\\harou\\full\\pfe-frontend or above\n' +
+    '  resolve as module\n' +
+    "    C:\\Users\\harou\\full\\pfe-frontend\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\full\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\node_modules doesn't exist or is not a directory"
+}
+
+-----
+[1m[31mFATAL[39m[0m: An unexpected Turbopack error occurred. A panic log has been written to C:\Users\harou\AppData\Local\Temp\next-panic-17f976e6b7d47af6e39565ab8b02c71d.log.
+
+To help make Turbopack better, report this error by clicking here: https://bugs.nextjs.org/search?category=turbopack-error-report&title=Turbopack%20Error%3A%20reading%20file%20C%3A%5CUsers%5Charou%5Cfull%5Cpfe-frontend%5Cpfe%5C.next%5Cdev%5Cserver%5Cmiddleware.js&body=Turbopack%20version%3A%20%602275bd85%60%0ANext.js%20version%3A%20%600.0.0%60%0A%0AError%20message%3A%0A%60%60%60%0Areading%20file%20C%3A%5CUsers%5Charou%5Cfull%5Cpfe-frontend%5Cpfe%5C.next%5Cdev%5Cserver%5Cmiddleware.js%0A%0ACaused%20by%3A%0A-%20Insufficient%20system%20resources%20exist%20to%20complete%20the%20requested%20service.%20%28os%20error%201450%29%0A%60%60%60&labels=Turbopack,Turbopack%20Panic%20Backtrace
+-----
+
+
+-----
+[1m[31mFATAL[39m[0m: An unexpected Turbopack error occurred. A panic log has been written to C:\Users\harou\AppData\Local\Temp\next-panic-17f976e6b7d47af6e39565ab8b02c71d.log.
+
+To help make Turbopack better, report this error by clicking here: https://bugs.nextjs.org/search?category=turbopack-error-report&title=Turbopack%20Error%3A%20reading%20file%20C%3A%5CUsers%5Charou%5Cfull%5Cpfe-frontend%5Cpfe%5C.next%5Cdev%5Cserver%5Cmiddleware.js&body=Turbopack%20version%3A%20%602275bd85%60%0ANext.js%20version%3A%20%600.0.0%60%0A%0AError%20message%3A%0A%60%60%60%0Areading%20file%20C%3A%5CUsers%5Charou%5Cfull%5Cpfe-frontend%5Cpfe%5C.next%5Cdev%5Cserver%5Cmiddleware.js%0A%0ACaused%20by%3A%0A-%20Insufficient%20system%20resources%20exist%20to%20complete%20the%20requested%20service.%20%28os%20error%201450%29%0A%60%60%60&labels=Turbopack,Turbopack%20Panic%20Backtrace
+-----
+
+[Server HMR] Subscription error: Error [TurbopackInternalError]: reading file C:\Users\harou\full\pfe-frontend\pfe\.next\dev\server\middleware.js
+
+Caused by:
+- Insufficient system resources exist to complete the requested service. (os error 1450)
+    at <unknown> (TurbopackInternalError: reading file C:\Users\harou\full\pfe-frontend\pfe\.next\dev\server\middleware.js) {
+  location: undefined
+}
+[Server HMR] Subscription error: Error [TurbopackInternalError]: reading file C:\Users\harou\full\pfe-frontend\pfe\.next\dev\server\middleware.js
+
+Caused by:
+- Insufficient system resources exist to complete the requested service. (os error 1450)
+    at <unknown> (TurbopackInternalError: reading file C:\Users\harou\full\pfe-frontend\pfe\.next\dev\server\middleware.js) {
+  location: undefined
+}
+[Server HMR] Subscription error: Error [TurbopackInternalError]: reading file C:\Users\harou\full\pfe-frontend\pfe\.next\dev\server\middleware.js
+
+Caused by:
+- Insufficient system resources exist to complete the requested service. (os error 1450)
+    at <unknown> (TurbopackInternalError: reading file C:\Users\harou\full\pfe-frontend\pfe\.next\dev\server\middleware.js) {
+  location: undefined
+}
+[Server HMR] Subscription error: Error [TurbopackInternalError]: reading file C:\Users\harou\full\pfe-frontend\pfe\.next\dev\server\middleware.js
+
+Caused by:
+- Insufficient system resources exist to complete the requested service. (os error 1450)
+    at <unknown> (TurbopackInternalError: reading file C:\Users\harou\full\pfe-frontend\pfe\.next\dev\server\middleware.js) {
+  location: undefined
+}
+Error: Can't resolve 'tailwindcss' in 'C:\Users\harou\full\pfe-frontend'
+    [2m[at finishWithoutResolve (C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:16:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m {
+  details: "resolve 'tailwindcss' in 'C:\\Users\\harou\\full\\pfe-frontend'\n" +
+    '  Parsed request is a module\n' +
+    '  No description file found in C:\\Users\\harou\\full\\pfe-frontend or above\n' +
+    '  resolve as module\n' +
+    "    C:\\Users\\harou\\full\\pfe-frontend\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\full\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\node_modules doesn't exist or is not a directory"
+}
+
+
+#
+# Fatal process out of memory: Re-embedded builtins: set permissions
+#
+----- Native stack trace -----
+
+ 1: 00007FF6D8576F4D 
+ 2: 00007FF6D99DDAC6 
+ 3: 00007FF6D926FA86 
+ 4: 00007FF6D90D6DFE 
+ 5: 00007FF6D910A3FF 
+ 6: 00007FF6D910AEB2 
+ 7: 00007FF6D910B892 
+ 8: 00007FF6D8C07703 
+ 9: 00007FF6D929A946 
+10: 00007FF6D8733F3D 
+11: 00007FF6D8485243 
+12: 00007FF6D84845D9 
+13: 00007FF6D848DFC0 
+14: 00007FF6D92C4A36 
+15: 00007FF6DA525A73 
+16: 00007FF95ECCE957 
+17: 00007FF960F2427C 
+
+<--- Last few GCs --->
+
+
+
+#
+# Fatal JavaScript out of memory: MemoryChunk allocation failed during deserialization.
+#
+----- Native stack trace -----
+
+ 1: 00007FF6D8576F4D node::MultiIsolatePlatform::DisposeIsolate+5341
+ 2: 00007FF6D99DDAC6 v8::base::FatalOOM+54
+ 3: 00007FF6D926FA86 v8::Function::NewInstance+390
+ 4: 00007FF6D90704D7 v8::base::AddressSpaceReservation::AddressSpaceReservation+322071
+ 5: 00007FF6D902272A v8::base::AddressSpaceReservation::AddressSpaceReservation+3178
+ 6: 00007FF6D90227EC v8::base::AddressSpaceReservation::AddressSpaceReservation+3372
+ 7: 00007FF6D90230DB v8::base::AddressSpaceReservation::AddressSpaceReservation+5659
+ 8: 00007FF6D8FFA331 v8::Platform::SystemClockTimeMillis+430161
+ 9: 00007FF6D90601E3 v8::base::AddressSpaceReservation::AddressSpaceReservation+255779
+10: 00007FF6D905FF4E v8::base::AddressSpaceReservation::AddressSpaceReservation+255118
+11: 00007FF6D905ED38 v8::base::AddressSpaceReservation::AddressSpaceReservation+250488
+12: 00007FF6D905ECBA v8::base::AddressSpaceReservation::AddressSpaceReservation+250362
+13: 00007FF6D9088715 X509_STORE_set_cleanup+4885
+14: 00007FF6D8C24DD8 v8::internal::Version::GetSONAME+241704
+15: 00007FF6D8C22BAC v8::internal::Version::GetSONAME+232956
+16: 00007FF6D8C29E2E v8::internal::Version::GetSONAME+262270
+17: 00007FF6D8C235DD v8::internal::Version::GetSONAME+235565
+18: 00007FF6D8C01484 v8::internal::Version::GetSONAME+95956
+19: 00007FF6D90787DE v8::base::AddressSpaceReservation::AddressSpaceReservation+355614
+20: 00007FF6D9078531 v8::base::AddressSpaceReservation::AddressSpaceReservation+354929
+21: 00007FF6D8C01F33 v8::internal::Version::GetSONAME+98691
+22: 00007FF6D910B49C SSL_CTX_set_default_read_buffer_len+45500
+23: 00007FF6D910B892 SSL_CTX_set_default_read_buffer_len+46514
+24: 00007FF6D8C07703 v8::internal::Version::GetSONAME+121171
+
+25: 00007FF6D929A946 v8::Isolate::Initialize+662
+thread '<unnamed>' panicked at C:\Users\runneradmin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\rayon-core-1.12.1\src\registry.rs:168:10:
+26: 00007FF6D8733F3D node::SetIsolateUpForNode+749
+The global thread pool has not been initialized.: ThreadPoolBuildError { kind: IOError(Os { code: 1450, kind: Uncategorized, message: "Insufficient system resources exist to complete the requested service." }) }
+27: 00007FF6D8485243 RSA_meth_get_flags+223043
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+28: 00007FF6D84845D9 RSA_meth_get_flags+219865
+29: 00007FF6D848DFC0 RSA_meth_get_flags+259264
+30: 00007FF6D92C4A36 uv_thread_detach+150
+31: 00007FF6DA525A73 v8::base::UnsignedDivisionByConstant<unsigned __int64>+2907235
+32: 00007FF95ECCE957 BaseThreadInitThunk+23
+33: 00007FF960F2427C RtlUserThreadStart+44
+
+
+#
+# Fatal process out of memory: Re-embedded builtins: set permissions
+#
+----- Native stack trace -----
+
+ 1: 00007FF6D8576F4D 
+ 2: 00007FF6D99DDAC6 
+ 3: 00007FF6D926FA86 
+ 4: 00007FF6D90D6DFE 
+ 5: 00007FF6D910A3FF 
+ 6: 00007FF6D910AEB2 
+ 7: 00007FF6D910B892 
+ 8: 00007FF6D8C07703 
+ 9: 00007FF6D929A946 
+10: 00007FF6D8733F3D 
+11: 00007FF6D8485243 
+12: 00007FF6D84845D9 
+13: 00007FF6D848DFC0 
+14: 00007FF6D92C4A36 
+15: 00007FF6DA525A73 
+16: 00007FF95ECCE957 BaseThreadInitThunk+23
+17: 00007FF960F2427C 
+
+thread 'tokio-runtime-worker' (25704) panicked at C:\actions-runner\svc-home\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\tokio-1.43.0\src\io\blocking.rs:76:46:
+OS can't spawn worker thread: The paging file is too small for this operation to complete. (os error 1455)
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+<--- Last few GCs --->
+
+[39020:0000015060B67000]     2108 ms: Scavenge 8.8 (11.4) -> 7.5 (11.4) MB, pooled: 0 MB, 0.97 / 0.00 ms  (average mu = 1.000, current mu = 1.000) allocation failure; 
+[39020:0000015060B67000]     8179 ms: Scavenge 9.6 (12.6) -> 9.0 (17.4) MB, pooled: 0 MB, 6051.75 / 0.00 ms  (average mu = 1.000, current mu = 1.000) allocation failure; 
+[39020:0000015060B67000]    16352 ms: Scavenge 13.6 (18.3) -> 11.3 (14.6) MB, pooled: 5 MB, 991.95 / 0.00 ms  (average mu = 1.000, current mu = 1.000) allocation failure; 
+
+FATAL ERROR: MarkCompactCollector: young object promotion failed Allocation failed - JavaScript heap out of memory
+----- Native stack trace -----
+
+ 1: 00007FF6D862403F 
+ 2: 00007FF6D926FAA7 
+ 3: 00007FF6D90704D7 
+ 4: 00007FF6D904FDEE 
+ 5: 00007FF6D90454AD 
+ 6: 00007FF6D904515C 
+ 7: 00007FF6D9044DA1 
+ 8: 00007FF6D9057298 
+ 9: 00007FF6D9A50C5F 
+10: 00007FF6D8572E0E 
+11: 00007FF6D92C4A36 
+12: 00007FF6DA525A73 
+13: 00007FF95ECCE957 BaseThreadInitThunk+23
+14: 00007FF960F2427C 
+
+
+
+#
+
+
+
+
+# Fatal process out of memory: Re-embedded builtins: set permissions
+#
+
+
+<--- Last few GCs --->
+#
+# Fatal process out of memory: Re-embedded builtins: set permissions
+#
+#
+
+----- Native stack trace -----
+# Fatal process out of memory: Re-embedded builtins: set permissions
+# Fatal process out of memory: Worklist::Segment::Create
+[79504:0000019BE509D000]      166 ms: Scavenge 8.8 (11.4) -> 7.5 (11.4) MB, pooled: 0 MB, 1.39 / 0.00 ms  (average mu = 1.000, current mu = 1.000) allocation failure; 
+#
+
+#
+#
+[79504:0000019BE509D000]      245 ms: Scavenge 9.6 (12.6) -> 9.0 (17.6) MB, pooled: 0 MB, 1.62 / 0.00 ms  (average mu = 1.000, current mu = 1.000) allocation failure; 
+----- Native stack trace -----
+ 1: 00007FF6D8576F4D 
+----- Native stack trace -----
+----- Native stack trace -----
+
+
+ 2: 00007FF6D99DDAC6 
+
+
+FATAL ERROR: Zone Allocation failed - process out of memory
+ 3: 00007FF6D926FA86 
+----- Native stack trace -----
+ 4: 00007FF6D90D6DFE 
+
+ 5: 00007FF6D910A3FF 
+ 6: 00007FF6D910AEB2 
+ 7: 00007FF6D910B892 
+ 8: 00007FF6D8C07703 
+ 9: 00007FF6D929A946 
+10: 00007FF6D8733F3D 
+11: 00007FF6D8485243 
+12: 00007FF6D84845D9 
+13: 00007FF6D848DFC0 
+14: 00007FF6D92C4A36 
+15: 00007FF6DA525A73 
+16: 00007FF95ECCE957 BaseThreadInitThunk+23
+17: 00007FF960F2427C RtlUserThreadStart+44
+ 1: 00007FF6D8576F4D node::MultiIsolatePlatform::DisposeIsolate+5341
+ 1: 00007FF6D8576F4D 
+ 2: 00007FF6D99DDAC6 v8::base::FatalOOM+54
+ 3: 00007FF6D8FECB16 v8::Platform::SystemClockTimeMillis+374838
+ 1: 00007FF6D8576F4D 
+ 1: 00007FF6D862403F node::OnFatalError+1343
+ 2: 00007FF6D99DDAC6 
+ 4: 00007FF6D8FE9FC3 v8::Platform::SystemClockTimeMillis+363747
+ 2: 00007FF6D99DDAC6 
+ 3: 00007FF6D926FA86 
+ 5: 00007FF6D8FED3DF v8::Platform::SystemClockTimeMillis+377087
+ 2: 00007FF6D926FAA7 v8::Function::NewInstance+423
+ 3: 00007FF6D926FA86 
+ 4: 00007FF6D90D6DFE 
+ 6: 00007FF6D8FEDC1B v8::Platform::SystemClockTimeMillis+379195
+ 3: 00007FF6D8BE9986 v8::SnapshotCreator::GetIsolate+56566
+Error: Can't resolve 'tailwindcss' in 'C:\Users\harou\full\pfe-frontend'
+    [2m[at finishWithoutResolve (C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:16:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\harou\full\pfe-frontend\pfe\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\harou\full\pfe-frontend\pfe\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m {
+  details: "resolve 'tailwindcss' in 'C:\\Users\\harou\\full\\pfe-frontend'\n" +
+    '  Parsed request is a module\n' +
+    '  No description file found in C:\\Users\\harou\\full\\pfe-frontend or above\n' +
+    '  resolve as module\n' +
+    "    C:\\Users\\harou\\full\\pfe-frontend\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\full\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\harou\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\node_modules doesn't exist or is not a directory"
+}
+ 4: 00007FF6D90D6DFE 
+ 5: 00007FF6D910A3FF 
+ 7: 00007FF6D8FE71D8 v8::Platform::SystemClockTimeMillis+351992
+ 4: 00007FF6D89E2890 v8::internal::OptimizingCompileInputQueue::OptimizingCompileInputQueue+19264
+ 5: 00007FF6D910A3FF 
+ 6: 00007FF6D910AEB2 
+ 8: 00007FF6D8FDCE4F v8::Platform::SystemClockTimeMillis+310127
+ 5: 00007FF6D8ADA459 SSL_CTX_get_client_CA_list+825113
+ 6: 00007FF6D910AEB2 
+ 7: 00007FF6D910B892 
+ 9: 00007FF6D8FDA228 v8::Platform::SystemClockTimeMillis+298824
+ 8: 00007FF6D8C07703 
+ 7: 00007FF6D910B892 
+ 6: 00007FF6D8ADA257 SSL_CTX_get_client_CA_list+824599
+10: 00007FF6D8FD9FD0 v8::Platform::SystemClockTimeMillis+298224
+ 7: 00007FF6D8AC4A83 SSL_CTX_get_client_CA_list+736579
+ 8: 00007FF6D8AC23CD SSL_CTX_get_client_CA_list+726669
+ 9: 00007FF6D929A946 
+11: 00007FF6D9A50C5F v8::platform::DefaultJobHandle::UpdatePriority+591
+ 8: 00007FF6D8C07703 
+ 9: 00007FF6D929A946 
+10: 00007FF6D8733F3D 
+12: 00007FF6D8572E0E node::GetNodeReport+90430
+ 9: 00007FF6D8ABF78A SSL_CTX_get_client_CA_list+715338
+10: 00007FF6D8733F3D 
+11: 00007FF6D8485243 
+13: 00007FF6D92C4A36 uv_thread_detach+150
+10: 00007FF6D91E376F EVP_MD_CTX_set_update_fn+200559
+11: 00007FF6D8485243 
+12: 00007FF6D84845D9 
+14: 00007FF6DA525A73 v8::base::UnsignedDivisionByConstant<unsigned __int64>+2907235
+11: 00007FF6D8AC126B SSL_CTX_get_client_CA_list+722219
+12: 00007FF6D84845D9 
+13: 00007FF6D848DFC0 
+15: 00007FF95ECCE957 BaseThreadInitThunk+23
+12: 00007FF6D9A50C5F v8::platform::DefaultJobHandle::UpdatePriority+591
+13: 00007FF6D848DFC0 
+14: 00007FF6D92C4A36 
+16: 00007FF960F2427C RtlUserThreadStart+44
+13: 00007FF6D8572E0E node::GetNodeReport+90430
+14: 00007FF6D92C4A36 
+15: 00007FF6DA525A73 
+14: 00007FF6D92C4A36 uv_thread_detach+150
+15: 00007FF6DA525A73 
+16: 00007FF95ECCE957 BaseThreadInitThunk+23
+15: 00007FF6DA525A73 v8::base::UnsignedDivisionByConstant<unsigned __int64>+2907235
+16: 00007FF95ECCE957 BaseThreadInitThunk+23
+17: 00007FF960F2427C RtlUserThreadStart+44
+16: 00007FF95ECCE957 BaseThreadInitThunk+23
+17: 00007FF960F2427C RtlUserThreadStart+44
+17: 00007FF960F2427C RtlUserThreadStart+44
+
+
+#
+# Fatal process out of memory: Re-embedded builtins: set permissions
+#
+----- Native stack trace -----
+
+ 1: 00007FF6D8576F4D 
+ 2: 00007FF6D99DDAC6 
+ 3: 00007FF6D926FA86 
+ 4: 00007FF6D90D6DFE 
+ 5: 00007FF6D910A3FF 
+ 6: 00007FF6D910AEB2 
+ 7: 00007FF6D910B892 
+ 8: 00007FF6D8C07703 
+ 9: 00007FF6D929A946 
+10: 00007FF6D8733F3D 
+11: 00007FF6D8485243 
+12: 00007FF6D84845D9 
+13: 00007FF6D848DFC0 
+14: 00007FF6D92C4A36 
+15: 00007FF6DA525A73 
+16: 00007FF95ECCE957 BaseThreadInitThunk+23
+17: 00007FF960F2427C RtlUserThreadStart+44
+
+<--- Last few GCs --->
+
+[79708:000001A61760E000]     6127 ms: Scavenge 8.8 (11.4) -> 7.5 (11.4) MB, pooled: 0 MB, 1.10 / 0.00 ms  (average mu = 1.000, current mu = 1.000) allocation failure; 
+[79708:000001A61760E000]     6160 ms: Scavenge 9.6 (12.6) -> 8.9 (17.6) MB, pooled: 0 MB, 1.83 / 0.00 ms  (average mu = 1.000, current mu = 1.000) allocation failure; 
+
+FATAL ERROR: Zone Allocation failed - process out of memory
+----- Native stack trace -----
+
+
+
+#
+# Fatal process out of memory: Re-embedded builtins: set permissions
+#
+----- Native stack trace -----
+
+ 1: 00007FF6D8576F4D 
+ 2: 00007FF6D99DDAC6 
+ 3: 00007FF6D926FA86 
+ 4: 00007FF6D90D6DFE 
+ 5: 00007FF6D910A3FF 
+ 6: 00007FF6D910AEB2 
+ 7: 00007FF6D910B892 
+ 8: 00007FF6D8C07703 
+ 9: 00007FF6D929A946 
+10: 00007FF6D8733F3D 
+11: 00007FF6D8485243 
+12: 00007FF6D84845D9 
+13: 00007FF6D848DFC0 
+14: 00007FF6D92C4A36 
+15: 00007FF6DA525A73 
+16: 00007FF95ECCE957 BaseThreadInitThunk+23
+17: 00007FF960F2427C RtlUserThreadStart+44
+
+
+#
+# Fatal process out of memory: Re-embedded builtins: set permissions
+#
+----- Native stack trace -----
+
+ 1: 00007FF6D8576F4D node::MultiIsolatePlatform::DisposeIsolate+5341
+ 2: 00007FF6D99DDAC6 v8::base::FatalOOM+54
+ 3: 00007FF6D926FA86 v8::Function::NewInstance+390
+ 4: 00007FF6D90D6DFE v8::CppHeap::CollectGarbageInYoungGenerationForTesting+111438
+ 5: 00007FF6D910A3FF SSL_CTX_set_default_read_buffer_len+41247
+ 6: 00007FF6D910AEB2 SSL_CTX_set_default_read_buffer_len+43986
+ 7: 00007FF6D910B892 SSL_CTX_set_default_read_buffer_len+46514
+ 8: 00007FF6D8C07703 v8::internal::Version::GetSONAME+121171
+ 9: 00007FF6D929A946 v8::Isolate::Initialize+662
+10: 00007FF6D8733F3D node::SetIsolateUpForNode+749
+11: 00007FF6D8485243 RSA_meth_get_flags+223043
+12: 00007FF6D84845D9 RSA_meth_get_flags+219865
+13: 00007FF6D848DFC0 RSA_meth_get_flags+259264
+14: 00007FF6D92C4A36 uv_thread_detach+150
+15: 00007FF6DA525A73 v8::base::UnsignedDivisionByConstant<unsigned __int64>+2907235
+16: 00007FF95ECCE957 BaseThreadInitThunk+23
+17: 00007FF960F2427C RtlUserThreadStart+44
+
+
+#
+# Fatal process out of memory: Re-embedded builtins: set permissions
+#
+----- Native stack trace -----
+
+ 1: 00007FF6D8576F4D 
+ 2: 00007FF6D99DDAC6 
+ 3: 00007FF6D926FA86 
+ 4: 00007FF6D90D6DFE 
+ 5: 00007FF6D910A3FF 
+ 6: 00007FF6D910AEB2 
+ 7: 00007FF6D910B892 
+ 8: 00007FF6D8C07703 
+ 9: 00007FF6D929A946 
+10: 00007FF6D8733F3D 
+11: 00007FF6D8485243 
+12: 00007FF6D84845D9 
+13: 00007FF6D848DFC0 
+14: 00007FF6D92C4A36 
+15: 00007FF6DA525A73 
+16: 00007FF95ECCE957 BaseThreadInitThunk+23
+17: 00007FF960F2427C RtlUserThreadStart+44
+
+<--- Last few GCs --->
+
+FATAL ERROR: Committing semi space failed. Allocation failed - JavaScript heap out of memory
+----- Native stack trace -----
+
+ 1: 00007FF6D862403F 
+ 2: 00007FF6D926FAA7 
+ 3: 00007FF6D90704D7 
+ 4: 00007FF6D9008EFB 
+ 5: 00007FF6D8FE094E 
+ 6: 00007FF6D9072F72 
+ 7: 00007FF6D9071F27 
+ 8: 00007FF6D9082E52 
+ 9: 00007FF6D908297B 
+10: 00007FF6DA50A2AD 
+11: 00007FF6D906DFA0 
+12: 00007FF6D90887EA 
+13: 00007FF6D9094C86 
+14: 00007FF6D8C669C7 
+15: 000002A1BFE775FA 

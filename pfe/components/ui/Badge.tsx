@@ -48,6 +48,11 @@ export function Badge({ children, variant = 'default', size = 'sm', className, d
 
 export function StatusBadge({ status }: { status: string }) {
   const map: Record<string, { label: string; variant: BadgeVariant }> = {
+    BROUILLON: { label: 'Draft', variant: 'warning' },
+    EN_COURS_VALIDATION: { label: 'In review', variant: 'info' },
+    APPROUVE: { label: 'Approved', variant: 'success' },
+    EXPORTE: { label: 'Exported', variant: 'purple' },
+    ARCHIVE: { label: 'Archived', variant: 'default' },
     DRAFT: { label: 'Draft', variant: 'warning' },
     PUBLISHED: { label: 'Published', variant: 'success' },
     ARCHIVED: { label: 'Archived', variant: 'default' },

@@ -8,13 +8,10 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { toast } from 'react-hot-toast'
 import { Mail, Lock, Eye, EyeOff, BookOpen } from 'lucide-react'
-//import { useAuth } from '@/context/AuthContext'
+import { useAuth } from '@/context/AuthContext'
 import { ThemeToggle } from '@/components/theme/ThemeToggle'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
-import { login } from '@/action/login'
-import { setAuth } from '@/lib/auth'
-
 
 const schema = z.object({
   email: z.string().email('Please enter a valid email address'),
@@ -23,9 +20,10 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>
 
 export default function LoginPage() {
-  
   const router = useRouter()
+  const { login } = useAuth()
   const [showPass, setShowPass] = useState(false)
+  const [serverError, setServerError] = useState('')
 
   const {
     register,
@@ -34,17 +32,18 @@ export default function LoginPage() {
   } = useForm<FormData>({ resolver: zodResolver(schema) })
 
   const onSubmit = async (data: FormData) => {
-    
+    setServerError('')
+
     try {
-      const res = await login(data.email, data.password)
-      console.log(res);
-      if(res){
-        setAuth(res.access_token, res.userInfo)
-      }
+      await login(data.email, data.password)
       toast.success('Logged in')
       router.push('/dashboard')
-    } catch {
-      toast.error('Incorrect email or password.')
+    } catch (error: unknown) {
+      const message = error instanceof Error
+        ? error.message
+        : 'Unable to log in. Please try again.'
+      setServerError(message)
+      toast.error(message)
     }
   }
 
@@ -74,6 +73,15 @@ export default function LoginPage() {
             </p>
           </div>
 
+          {serverError && (
+            <div
+              role="alert"
+              className="mb-5 rounded-xl border border-red-500/20 bg-red-500/8 px-4 py-3 text-sm text-red-300"
+            >
+              {serverError}
+            </div>
+          )}
+
           <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-5">
             <Input
               id="email"
@@ -98,7 +106,7 @@ export default function LoginPage() {
                 <button
                   type="button"
                   onClick={() => setShowPass(v => !v)}
-                    className="p-0.5 text-[var(--lux-muted-soft)] transition-colors hover:text-[var(--lux-text)]"
+                  className="p-0.5 text-[var(--lux-muted-soft)] transition-colors hover:text-[var(--lux-text)]"
                   aria-label={showPass ? 'Hide password' : 'Show password'}
                 >
                   {showPass ? <EyeOff size={14} /> : <Eye size={14} />}

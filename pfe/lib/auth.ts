@@ -17,6 +17,11 @@ export function setAuth(token: string, user: User) {
   notifyAuthChanged()
 }
 
+export function setStoredUser(user: User) {
+  Cookies.set(USER_KEY, JSON.stringify(user), { expires: 1, sameSite: 'strict' })
+  notifyAuthChanged()
+}
+
 export function normalizeUser(raw: {
   id: string | number
   email: string
