@@ -39,13 +39,15 @@ import {
   Trash2,
   Type,
   Undo2,
+  Upload,
   Video,
   X,
 } from 'lucide-react'
 import { ThemeToggle } from '@/components/theme/ThemeToggle'
 import { Button } from '@/components/ui/Button'
 import { Spinner } from '@/components/ui/Spinner'
-import { scenariosApi, scormApi } from '@/lib/api'
+import { scenariosApi, scormApi, mediaApi } from '@/lib/api'
+// hne 9aad nestaamel fi media api juste bech maysirech erreur , il faut changer cette action pour ajouter un cour avec support(video / image ou audio)
 import { cn } from '@/lib/utils'
 import { useAuth } from '@/context/AuthContext'
 import type {
@@ -138,6 +140,36 @@ const blockLibraryGroups: Array<{ label: string; icon: typeof Type; type?: Cours
   { label: 'Code', icon: MoreHorizontal, type: 'embed' },
   { label: 'Custom block', icon: Pencil, type: 'text', beta: true },
 ]
+
+// Drag and drop helpers
+const DRAG_TYPE_LESSON = 'lesson'
+const DRAG_TYPE_BLOCK = 'block'
+
+interface DragData {
+  type: string
+  id: string
+  sourceIndex: number
+}
+
+// File upload helper
+async function uploadFile(file: File): Promise<string> {
+  const formData = new FormData()
+  formData.append('file', file)
+  const response = await mediaApi.upload(formData)
+  return response.data.url
+}
+
+function isImageFile(file: File): boolean {
+  return file.type.startsWith('image/')
+}
+
+function isVideoFile(file: File): boolean {
+  return file.type.startsWith('video/')
+}
+
+function isAudioFile(file: File): boolean {
+  return file.type.startsWith('audio/')
+}
 
 export function InlineScenarioCourseEditor({
   mode,
@@ -278,6 +310,16 @@ export function InlineScenarioCourseEditor({
     }
   }, [updateDocument, view])
 
+  const reorderLessons = useCallback((fromIndex: number, toIndex: number) => {
+    if (fromIndex === toIndex) return
+    updateDocument((current) => {
+      const lessons = [...(current.lessons ?? [])]
+      const [moved] = lessons.splice(fromIndex, 1)
+      lessons.splice(toIndex, 0, moved)
+      return { ...current, lessons }
+    })
+  }, [updateDocument])
+
   const selectedLesson = view.type === 'lesson'
     ? document.lessons?.find((lesson) => lesson.id === view.lessonId) ?? null
     : null
@@ -372,6 +414,7 @@ export function InlineScenarioCourseEditor({
               onAddLesson={addLesson}
               onUpdateLesson={updateLesson}
               onRemoveLesson={removeLesson}
+              onReorderLessons={reorderLessons}
               onOpenLesson={(lessonId) => setView({ type: 'lesson', lessonId })}
             />
           )}
@@ -459,6 +502,7 @@ function StructurePage({
   onAddLesson,
   onUpdateLesson,
   onRemoveLesson,
+  onReorderLessons,
   onOpenLesson,
 }: {
   document: CourseDocument
@@ -473,25 +517,52 @@ function StructurePage({
   onAddLesson: (title: string) => boolean
   onUpdateLesson: (lessonId: string, updater: (lesson: CourseLesson) => CourseLesson) => void
   onRemoveLesson: (lessonId: string) => void
+  onReorderLessons: (fromIndex: number, toIndex: number) => void
   onOpenLesson: (lessonId: string) => void
 }) {
-  const [draggedLessonId, setDraggedLessonId] = useState<string | null>(null)
+  const [dragOverIndex, setDragOverIndex] = useState<number | null>(null)
+  
+  const lessons = document.lessons ?? []
 
-  const reorderLesson = (targetLessonId: string) => {
-    if (!draggedLessonId || draggedLessonId === targetLessonId) return
-    onUpdateDocument((current) => {
-      const lessons = [...(current.lessons ?? [])]
-      const from = lessons.findIndex((lesson) => lesson.id === draggedLessonId)
-      const to = lessons.findIndex((lesson) => lesson.id === targetLessonId)
-      if (from < 0 || to < 0) return current
-      const [moved] = lessons.splice(from, 1)
-      lessons.splice(to, 0, moved)
-      return { ...current, lessons }
-    })
-    setDraggedLessonId(null)
+  const handleDragStart = (event: DragEvent<HTMLDivElement>, index: number) => {
+    const dragData: DragData = {
+      type: DRAG_TYPE_LESSON,
+      id: lessons[index].id,
+      sourceIndex: index,
+    }
+    event.dataTransfer.setData('text/plain', JSON.stringify(dragData))
+    event.dataTransfer.effectAllowed = 'move'
+    event.currentTarget.classList.add('opacity-50')
   }
 
-  const lessons = document.lessons ?? []
+  const handleDragEnd = (event: DragEvent<HTMLDivElement>) => {
+    event.currentTarget.classList.remove('opacity-50')
+    setDragOverIndex(null)
+  }
+
+  const handleDragOver = (event: DragEvent<HTMLDivElement>, index: number) => {
+    event.preventDefault()
+    event.dataTransfer.dropEffect = 'move'
+    setDragOverIndex(index)
+  }
+
+  const handleDragLeave = () => {
+    setDragOverIndex(null)
+  }
+
+  const handleDrop = (event: DragEvent<HTMLDivElement>, targetIndex: number) => {
+    event.preventDefault()
+    setDragOverIndex(null)
+    
+    try {
+      const dragData: DragData = JSON.parse(event.dataTransfer.getData('text/plain'))
+      if (dragData.type === DRAG_TYPE_LESSON && dragData.sourceIndex !== targetIndex) {
+        onReorderLessons(dragData.sourceIndex, targetIndex)
+      }
+    } catch (error) {
+      console.error('Failed to parse drag data:', error)
+    }
+  }
 
   return (
     <div className="mx-auto w-full max-w-[952px] pb-10">
@@ -525,18 +596,28 @@ function StructurePage({
 
       <section className="mt-16 sm:mt-20">
         <div className="divide-y divide-[var(--lux-line)] border-b border-[var(--lux-line)]">
-          {lessons.map((lesson) => (
-            <LessonStructureItem
+          {lessons.map((lesson, index) => (
+            <div
               key={lesson.id}
-              lesson={lesson}
-              draggable
-              onDragStart={() => setDraggedLessonId(lesson.id)}
-              onDragOver={(event) => event.preventDefault()}
-              onDrop={() => reorderLesson(lesson.id)}
-              onUpdate={(updater) => onUpdateLesson(lesson.id, updater)}
-              onRemove={() => onRemoveLesson(lesson.id)}
-              onOpen={() => onOpenLesson(lesson.id)}
-            />
+              className={cn(
+                'transition-all duration-200',
+                dragOverIndex === index && 'border-t-2 border-[var(--lux-primary)] pt-2'
+              )}
+            >
+              <LessonStructureItem
+                lesson={lesson}
+                index={index}
+                draggable
+                onDragStart={(event) => handleDragStart(event, index)}
+                onDragEnd={handleDragEnd}
+                onDragOver={(event) => handleDragOver(event, index)}
+                onDragLeave={handleDragLeave}
+                onDrop={(event) => handleDrop(event, index)}
+                onUpdate={(updater) => onUpdateLesson(lesson.id, updater)}
+                onRemove={() => onRemoveLesson(lesson.id)}
+                onOpen={() => onOpenLesson(lesson.id)}
+              />
+            </div>
           ))}
           <AddLessonInput inputRef={lessonInputRef} onAddLesson={onAddLesson} />
         </div>
@@ -773,16 +854,20 @@ function AddLessonInput({
 
 function LessonStructureItem({
   lesson,
+  index,
   onUpdate,
   onRemove,
   onOpen,
   ...dragProps
 }: {
   lesson: CourseLesson
+  index: number
   draggable?: boolean
-  onDragStart?: () => void
-  onDragOver?: (event: DragEvent) => void
-  onDrop?: () => void
+  onDragStart?: (event: DragEvent<HTMLDivElement>) => void
+  onDragEnd?: (event: DragEvent<HTMLDivElement>) => void
+  onDragOver?: (event: DragEvent<HTMLDivElement>) => void
+  onDragLeave?: () => void
+  onDrop?: (event: DragEvent<HTMLDivElement>) => void
   onUpdate: (updater: (lesson: CourseLesson) => CourseLesson) => void
   onRemove: () => void
   onOpen: () => void
@@ -800,7 +885,11 @@ function LessonStructureItem({
   }
 
   return (
-    <div className={cn('group relative py-7 transition-colors', chooserOpen && 'bg-[var(--lux-surface-soft)] px-5 sm:px-8')} {...dragProps}>
+    <div 
+      className={cn('group relative py-7 transition-colors', chooserOpen && 'bg-[var(--lux-surface-soft)] px-5 sm:px-8')} 
+      draggable
+      {...dragProps}
+    >
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
         <div className="flex min-w-0 flex-1 items-center gap-5">
           <GripVertical className="hidden h-4 w-4 flex-shrink-0 cursor-grab text-[var(--lux-muted-soft)] opacity-0 transition group-hover:opacity-100 sm:block" />
@@ -903,8 +992,9 @@ function LessonEditor({
   onUpdateLesson: (updater: (lesson: CourseLesson) => CourseLesson) => void
 }) {
   const [editingBlockId, setEditingBlockId] = useState<string | null>(null)
-  const [draggedBlockId, setDraggedBlockId] = useState<string | null>(null)
+  const [dragOverIndex, setDragOverIndex] = useState<number | null>(null)
   const [libraryOpen, setLibraryOpen] = useState(false)
+  const [isDraggingOver, setIsDraggingOver] = useState(false)
 
   const updateBlock = (blockId: string, updater: (block: CourseBlock) => CourseBlock) => {
     onUpdateLesson((current) => ({
@@ -923,6 +1013,28 @@ function LessonEditor({
     setLibraryOpen(false)
   }
 
+  const insertImageBlock = (imageUrl: string, title?: string) => {
+    const block = createBlock('image')
+    block.assetUrl = imageUrl
+    if (title) block.title = title
+    onUpdateLesson((current) => ({
+      ...setLessonKind(current, lesson.type),
+      blocks: [...current.blocks, block],
+    }))
+    setEditingBlockId(block.id)
+  }
+
+  const insertVideoBlock = (videoUrl: string, title?: string) => {
+    const block = createBlock('video')
+    block.assetUrl = videoUrl
+    if (title) block.title = title
+    onUpdateLesson((current) => ({
+      ...setLessonKind(current, lesson.type),
+      blocks: [...current.blocks, block],
+    }))
+    setEditingBlockId(block.id)
+  }
+
   const moveBlock = (blockId: string, direction: -1 | 1) => {
     onUpdateLesson((current) => {
       const blocks = [...current.blocks]
@@ -935,22 +1047,110 @@ function LessonEditor({
     })
   }
 
-  const reorderBlock = (targetBlockId: string) => {
-    if (!draggedBlockId || draggedBlockId === targetBlockId) return
+  const reorderBlocks = (fromIndex: number, toIndex: number) => {
+    if (fromIndex === toIndex) return
     onUpdateLesson((current) => {
       const blocks = [...current.blocks]
-      const from = blocks.findIndex((block) => block.id === draggedBlockId)
-      const to = blocks.findIndex((block) => block.id === targetBlockId)
-      if (from < 0 || to < 0) return current
-      const [block] = blocks.splice(from, 1)
-      blocks.splice(to, 0, block)
+      const [moved] = blocks.splice(fromIndex, 1)
+      blocks.splice(toIndex, 0, moved)
       return { ...current, blocks }
     })
-    setDraggedBlockId(null)
+  }
+
+  const handleFileDrop = async (event: DragEvent<HTMLDivElement>) => {
+    event.preventDefault()
+    setIsDraggingOver(false)
+    
+    const files = Array.from(event.dataTransfer.files)
+    if (files.length === 0) return
+
+    for (const file of files) {
+      try {
+        const uploadedUrl = await uploadFile(file)
+        
+        if (isImageFile(file)) {
+          insertImageBlock(uploadedUrl, file.name.replace(/\.[^/.]+$/, ''))
+          toast.success(`Image "${file.name}" added successfully`)
+        } else if (isVideoFile(file)) {
+          insertVideoBlock(uploadedUrl, file.name.replace(/\.[^/.]+$/, ''))
+          toast.success(`Video "${file.name}" added successfully`)
+        } else if (isAudioFile(file)) {
+          const block = createBlock('audio')
+          block.assetUrl = uploadedUrl
+          block.title = file.name.replace(/\.[^/.]+$/, '')
+          onUpdateLesson((current) => ({
+            ...setLessonKind(current, lesson.type),
+            blocks: [...current.blocks, block],
+          }))
+          toast.success(`Audio "${file.name}" added successfully`)
+        } else {
+          toast.error(`Unsupported file type: ${file.type}`)
+        }
+      } catch (error) {
+        console.error('Upload failed:', error)
+        toast.error(`Failed to upload ${file.name}`)
+      }
+    }
+  }
+
+  const handleDragOver = (event: DragEvent<HTMLDivElement>) => {
+    event.preventDefault()
+    event.dataTransfer.dropEffect = 'copy'
+    setIsDraggingOver(true)
+  }
+
+  const handleDragLeave = (event: DragEvent<HTMLDivElement>) => {
+    event.preventDefault()
+    setIsDraggingOver(false)
+  }
+
+  const handleBlockDragStart = (event: DragEvent<HTMLDivElement>, index: number) => {
+    const dragData: DragData = {
+      type: DRAG_TYPE_BLOCK,
+      id: lesson.blocks[index].id,
+      sourceIndex: index,
+    }
+    event.dataTransfer.setData('text/plain', JSON.stringify(dragData))
+    event.dataTransfer.effectAllowed = 'move'
+    event.currentTarget.classList.add('opacity-50')
+  }
+
+  const handleBlockDragEnd = (event: DragEvent<HTMLDivElement>) => {
+    event.currentTarget.classList.remove('opacity-50')
+    setDragOverIndex(null)
+  }
+
+  const handleBlockDragOver = (event: DragEvent<HTMLDivElement>, index: number) => {
+    event.preventDefault()
+    event.dataTransfer.dropEffect = 'move'
+    setDragOverIndex(index)
+  }
+
+  const handleBlockDragLeave = () => {
+    setDragOverIndex(null)
+  }
+
+  const handleBlockDrop = (event: DragEvent<HTMLDivElement>, targetIndex: number) => {
+    event.preventDefault()
+    setDragOverIndex(null)
+    
+    try {
+      const dragData: DragData = JSON.parse(event.dataTransfer.getData('text/plain'))
+      if (dragData.type === DRAG_TYPE_BLOCK && dragData.sourceIndex !== targetIndex) {
+        reorderBlocks(dragData.sourceIndex, targetIndex)
+      }
+    } catch (error) {
+      console.error('Failed to parse drag data:', error)
+    }
   }
 
   return (
-    <main className="min-h-[calc(100vh-2.5rem)] bg-[var(--lux-bg)]">
+    <main 
+      className="min-h-[calc(100vh-2.5rem)] bg-[var(--lux-bg)]"
+      onDragOver={handleDragOver}
+      onDragLeave={handleDragLeave}
+      onDrop={handleFileDrop}
+    >
       <div className="sticky top-10 z-30 flex h-14 items-center justify-between border-b border-[var(--lux-line)] bg-[var(--lux-surface)] px-3">
         <div className="flex min-w-0 items-center gap-4">
           <button
@@ -978,6 +1178,16 @@ function LessonEditor({
           <ThemeToggle compact className="h-9 w-9 rounded-md" />
         </div>
       </div>
+
+      {isDraggingOver && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm pointer-events-none">
+          <div className="rounded-lg bg-[var(--lux-surface)] p-8 text-center shadow-2xl">
+            <Upload size={48} className="mx-auto mb-4 text-[var(--lux-primary)]" />
+            <p className="text-lg font-semibold text-[var(--lux-text-strong)]">Drop your files here</p>
+            <p className="mt-2 text-sm text-[var(--lux-muted)]">Images, videos, and audio files will be added as blocks</p>
+          </div>
+        </div>
+      )}
 
       <div className={cn('transition-[padding] duration-200', libraryOpen && 'lg:pl-[304px]')}>
         <section className="mx-auto max-w-[600px] px-5 pb-[122px] pt-16 sm:pt-20">
@@ -1014,29 +1224,38 @@ function LessonEditor({
             )}
 
             {lesson.blocks.map((block, index) => (
-              <BlockItem
+              <div
                 key={block.id}
-                block={block}
-                index={index}
-                total={lesson.blocks.length}
-                editing={editingBlockId === block.id}
-                onEdit={() => setEditingBlockId(block.id)}
-                onDone={() => setEditingBlockId(null)}
-                onUpdate={(updater) => updateBlock(block.id, updater)}
-                onMoveUp={() => moveBlock(block.id, -1)}
-                onMoveDown={() => moveBlock(block.id, 1)}
-                onDuplicate={() => onUpdateLesson((current) => {
-                  const blocks = [...current.blocks]
-                  const blockIndex = blocks.findIndex((item) => item.id === block.id)
-                  blocks.splice(blockIndex + 1, 0, duplicateBlock(block))
-                  return { ...current, blocks }
-                })}
-                onDelete={() => onUpdateLesson((current) => ({ ...current, blocks: current.blocks.filter((item) => item.id !== block.id) }))}
-                draggable
-                onDragStart={() => setDraggedBlockId(block.id)}
-                onDragOver={(event) => event.preventDefault()}
-                onDrop={() => reorderBlock(block.id)}
-              />
+                className={cn(
+                  'transition-all duration-200',
+                  dragOverIndex === index && 'border-t-2 border-[var(--lux-primary)] pt-4'
+                )}
+              >
+                <BlockItem
+                  block={block}
+                  index={index}
+                  total={lesson.blocks.length}
+                  editing={editingBlockId === block.id}
+                  onEdit={() => setEditingBlockId(block.id)}
+                  onDone={() => setEditingBlockId(null)}
+                  onUpdate={(updater) => updateBlock(block.id, updater)}
+                  onMoveUp={() => moveBlock(block.id, -1)}
+                  onMoveDown={() => moveBlock(block.id, 1)}
+                  onDuplicate={() => onUpdateLesson((current) => {
+                    const blocks = [...current.blocks]
+                    const blockIndex = blocks.findIndex((item) => item.id === block.id)
+                    blocks.splice(blockIndex + 1, 0, duplicateBlock(block))
+                    return { ...current, blocks }
+                  })}
+                  onDelete={() => onUpdateLesson((current) => ({ ...current, blocks: current.blocks.filter((item) => item.id !== block.id) }))}
+                  draggable
+                  onDragStart={(event) => handleBlockDragStart(event, index)}
+                  onDragEnd={handleBlockDragEnd}
+                  onDragOver={(event) => handleBlockDragOver(event, index)}
+                  onDragLeave={handleBlockDragLeave}
+                  onDrop={(event) => handleBlockDrop(event, index)}
+                />
+              </div>
             ))}
 
             <QuickInsertBar
@@ -1222,9 +1441,11 @@ function BlockItem({
   total: number
   editing: boolean
   draggable?: boolean
-  onDragStart?: () => void
-  onDragOver?: (event: DragEvent) => void
-  onDrop?: () => void
+  onDragStart?: (event: DragEvent<HTMLDivElement>) => void
+  onDragEnd?: (event: DragEvent<HTMLDivElement>) => void
+  onDragOver?: (event: DragEvent<HTMLDivElement>) => void
+  onDragLeave?: () => void
+  onDrop?: (event: DragEvent<HTMLDivElement>) => void
   onEdit: () => void
   onDone: () => void
   onUpdate: (updater: (block: CourseBlock) => CourseBlock) => void
@@ -1238,7 +1459,11 @@ function BlockItem({
   const Icon = definition.icon
 
   return (
-    <article className={cn('group relative px-2 py-8 transition', editing && 'z-10')} {...dragProps}>
+    <article 
+      className={cn('group relative px-2 py-8 transition', editing && 'z-10')} 
+      draggable
+      {...dragProps}
+    >
       <div className="absolute left-1/2 top-0 hidden -translate-x-1/2 -translate-y-1/2 items-center rounded-full border border-[var(--lux-line)] bg-[var(--lux-surface)] p-1 shadow-[0_2px_8px_rgba(0,0,0,0.12)] group-hover:flex">
         <IconButton label="Quick insert" onClick={onEdit}><X size={18} /></IconButton>
         <IconButton label="AI assist" onClick={onEdit}><Sparkles size={18} className="text-[var(--lux-gold)]" /></IconButton>
@@ -1322,6 +1547,23 @@ function InlineBlockSurface({
   }
   const removeItem = (id: string) => updateItems(items.filter((item) => item.id !== id))
   const meta = (key: string, fallback = '') => String(metadata[key] ?? fallback)
+
+  const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>, type: 'image' | 'video' | 'audio') => {
+    const file = event.target.files?.[0]
+    if (!file) return
+
+    try {
+      const url = await uploadFile(file)
+      update({ assetUrl: url })
+      if (type === 'image' && !block.title) {
+        update({ title: file.name.replace(/\.[^/.]+$/, '') })
+      }
+      toast.success(`${type.charAt(0).toUpperCase() + type.slice(1)} uploaded successfully`)
+    } catch (error) {
+      console.error('Upload failed:', error)
+      toast.error(`Failed to upload ${file.name}`)
+    }
+  }
 
   const doneControl = editing ? (
     <div className="mt-4 flex justify-end">
@@ -1487,8 +1729,31 @@ function InlineBlockSurface({
           const isImage = block.type === 'image'
           const isVideo = block.type === 'video'
           const isAudio = block.type === 'audio'
+          
+          const handleDrop = async (event: DragEvent<HTMLDivElement>) => {
+            event.preventDefault()
+            const file = event.dataTransfer.files?.[0]
+            if (!file) return
+            
+            try {
+              const url = await uploadFile(file)
+              update({ assetUrl: url })
+              if (isImage && !block.title) {
+                update({ title: file.name.replace(/\.[^/.]+$/, '') })
+              }
+              toast.success(`${isImage ? 'Image' : isVideo ? 'Video' : 'Audio'} uploaded successfully`)
+            } catch (error) {
+              console.error('Upload failed:', error)
+              toast.error(`Failed to upload ${file.name}`)
+            }
+          }
+
           return (
-            <div className="space-y-4">
+            <div 
+              className="space-y-4"
+              onDragOver={(e) => e.preventDefault()}
+              onDrop={handleDrop}
+            >
               <input value={block.title ?? ''} onChange={(event) => update({ title: event.target.value })} placeholder={definition.label} className={cn(ghostInputClass, 'text-xl font-bold text-[var(--lux-text-strong)]')} />
               <div className="rounded-lg border border-[var(--lux-line)] bg-[var(--lux-surface)] p-5">
                 {isImage && block.assetUrl ? (
@@ -1500,11 +1765,25 @@ function InlineBlockSurface({
                 ) : block.assetUrl && block.type === 'embed' ? (
                   <div className="aspect-video rounded border border-[var(--lux-line)] bg-[var(--lux-surface-soft)] p-4 text-sm text-[var(--lux-muted)]">{block.assetUrl}</div>
                 ) : (
-                  <div className="grid min-h-40 place-items-center rounded border border-dashed border-[var(--lux-line)] bg-[var(--lux-surface-soft)] text-center text-sm text-[var(--lux-muted)]">
+                  <div 
+                    className="group/upload relative grid min-h-40 cursor-pointer place-items-center rounded border border-dashed border-[var(--lux-line)] bg-[var(--lux-surface-soft)] text-center text-sm text-[var(--lux-muted)] transition hover:border-[var(--lux-primary)] hover:bg-[var(--lux-surface)]"
+                    onClick={() => document.getElementById(`file-upload-${block.id}`)?.click()}
+                  >
                     <div>
                       {isImage ? <ImageIcon className="mx-auto mb-2" size={28} /> : isVideo ? <Video className="mx-auto mb-2" size={28} /> : <Download className="mx-auto mb-2" size={28} />}
-                      Add media URL below
+                      <p>Click or drag & drop to upload</p>
+                      <p className="mt-1 text-xs text-[var(--lux-muted-soft)]">
+                        {isImage ? 'JPG, PNG, GIF, SVG' : isVideo ? 'MP4, WebM, MOV' : 'MP3, WAV, OGG'}
+                      </p>
                     </div>
+                    
+                    <input
+                      id={`file-upload-${block.id}`}
+                      type="file"
+                      accept={isImage ? 'image/*' : isVideo ? 'video/*' : 'audio/*'}
+                      className="hidden"
+                      onChange={(e) => handleFileUpload(e, isImage ? 'image' : isVideo ? 'video' : 'audio')}
+                    />
                   </div>
                 )}
                 <input value={block.assetUrl ?? ''} onChange={(event) => update({ assetUrl: event.target.value })} placeholder="Media, file, or embed URL" className={cn(inputClass, 'mt-4 w-full')} />
@@ -1515,8 +1794,30 @@ function InlineBlockSurface({
         }
 
         if (block.type === 'image_gallery' || block.type === 'gallery') {
+          const handleGalleryDrop = async (event: DragEvent<HTMLDivElement>) => {
+            event.preventDefault()
+            const files = Array.from(event.dataTransfer.files)
+            
+            for (const file of files) {
+              if (isImageFile(file)) {
+                try {
+                  const url = await uploadFile(file)
+                  addItem({ mediaUrl: url, title: file.name.replace(/\.[^/.]+$/, '') })
+                  toast.success(`Image "${file.name}" added to gallery`)
+                } catch (error) {
+                  console.error('Upload failed:', error)
+                  toast.error(`Failed to upload ${file.name}`)
+                }
+              }
+            }
+          }
+
           return (
-            <div className="space-y-4">
+            <div 
+              className="space-y-4"
+              onDragOver={(e) => e.preventDefault()}
+              onDrop={handleGalleryDrop}
+            >
               <input value={block.title ?? ''} onChange={(event) => update({ title: event.target.value })} placeholder="Gallery title" className={cn(ghostInputClass, 'text-2xl font-bold text-[var(--lux-text-strong)]')} />
               <div className="grid gap-3 sm:grid-cols-2">
                 {items.map((item, itemIndex) => (

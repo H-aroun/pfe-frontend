@@ -105,13 +105,13 @@ export default function DashboardPage() {
             color="text-[#83BFA1]"
             iconBg="bg-[#0F6B4A]/18"
           />
-          <StatCard
+          {isAdmin && <StatCard
             icon={Users}
             label="Total Users"
             value={(stats as AnalyticsDashboard).totalUsers ?? '—'}
             color="text-[#C6A765]"
             iconBg="bg-[#C6A765]/12"
-          />
+          />}
           <StatCard
             icon={TrendingUp}
             label="Avg Completion"
